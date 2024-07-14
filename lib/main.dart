@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
+import 'signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -118,7 +120,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: () {
-                      print('Login Page');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
@@ -149,7 +154,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   SizedBox(height: 8),
                   ElevatedButton(
                     onPressed: () {
-                      print('Sign up Page');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignupPage()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
