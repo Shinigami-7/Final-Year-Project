@@ -22,7 +22,7 @@ class LoginPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
-            padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+            padding: EdgeInsets.symmetric(horizontal: 80, vertical: 55),
           ),
           child: Text(
             'LOGIN',
