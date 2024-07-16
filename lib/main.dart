@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'login_page.dart';
+import 'signup_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,26 +9,21 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
-
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'LOADING_PAGE'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-
 
   final String title;
 
@@ -35,90 +32,155 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      appBar: AppBar(
-
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
-        title: Text("My Project"),
-      ),
-      body: Center(
+      body: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Colors.white, Colors.greenAccent],
+          ),
+        ),
         child: Column(
           children: [
-            Container(
-                height: 150,
-                width: 150,
-                child: Image.asset('assets/images/logo1-removebg-preview.png')
-            ),
-            Container(
-              height: 50,
-              width: 150,
-              color: Colors.grey,
-              child: Center(
-                  child: Text("Login Here", style:
-                  TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold
-                  ),
-                  )
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 11),
               child: Container(
-                height: 30,
-                width: 300,
-                color: Colors.white70,
-                child: Center(
-                  child: Text("Username", style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontStyle: FontStyle.italic
-                  ),
+                height: 450,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/background.png'),
+                    fit: BoxFit.cover,
                   ),
                 ),
-
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 11),
-              child: Container(
-                height: 30,
-                width: 300,
-                color: Colors.white70,
-                child: Center(
-                  child: Text("Password", style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 14,
-                      fontStyle: FontStyle.italic
-                  ),),
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
+                      colors: [
+                        Colors.blueAccent.withOpacity(0.6),
+                        Colors.transparent,
+                      ],
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Monitor your',
+                        style: TextStyle(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      Text(
+                        'Health Condition timely',
+                        style: TextStyle(
+                          fontSize: 32,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 11),
-              child: ElevatedButton(
-                child: Text("Log in"),
-
-                onPressed: (){
-                  print("log in");
-                },
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/Timed logo-01.png',
+                    width: 400,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
+                  Text(
+                    'Start your medication routine with us',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 90,
+                        vertical: 10,
+                      ),
+                    ),
+                    child: Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Doesn't have an account yet?",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignupPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 80,
+                        vertical: 10,
+                      ),
+                    ),
+                    child: Text(
+                      'SIGN UP',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            )
+            ),
           ],
         ),
       ),
-
-
-
     );
   }
 }
