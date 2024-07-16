@@ -81,17 +81,43 @@ class LoginPage extends StatelessWidget {
                 ),
                 SizedBox(height: 10,),
                 Text("or", style: TextStyle(fontSize: 20),),
-              ElevatedButton(
-                onPressed: () {
-                  print('done');
-                },
-                style: ButtonStyle(shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0), // Adjust the radius as needed
-                ),)),
-
-                child: Text('Continue with facebook'),
+          Container(
+            width: 240,
+            height: 50,
+            child: ElevatedButton.icon(
+              onPressed: (){},
+              icon: Icon(Icons.facebook), // ReflixIcon to display on the left of the button text
+              label: Text('Continue with Facebook'), // Text to display on the button
+              style: ElevatedButton.styleFrom(
+                // Style customization for the button
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
 
+            ),
+          ),
+          SizedBox(height: 10,),
+          Container(
+            width: 240,
+            height: 50,
+            child: ElevatedButton(
+              onPressed: (){},
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+              ),
+              child: Row(
+                children: [
+                  Image.asset('assets/images/google.png', height: 20,width: 50,),
+                  Text('Continue with Google'),
+                ],
+              ),
+
+
+            ),
+          ),
             ],
           ),
         ),
