@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'home.dart';
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -54,6 +54,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
 
+<<<<<<< HEAD
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Container(
@@ -118,6 +119,47 @@ class LoginPage extends StatelessWidget {
 
             ),
           ),
+=======
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Container(
+                  width: 170,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    ),
+                    child: Text(
+                      'LOG IN',
+                      style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 10,),
+
+              Text("or", style: TextStyle(fontSize: 20),),
+              ElevatedButton(
+                onPressed: () {
+                  print('done');
+                },
+                style: ButtonStyle(shape: WidgetStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10.0), // Adjust the radius as needed
+                ),)),
+
+                child: Text('Continue with facebook'),
+              ),
+
+>>>>>>> c29e09df3dfb9c6ec263ebcef6e5d45527c0c67a
             ],
           ),
         ),
