@@ -115,9 +115,20 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 30),
-                Text(
-                  'Already have an account',
-                  style: TextStyle(color: Colors.black),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                    );
+                  },
+                  child: Text(
+                    'Already have an account',
+                    style: TextStyle(
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
                 ),
               ],
             ),
