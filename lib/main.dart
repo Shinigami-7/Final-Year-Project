@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'login_page.dart';
 import 'signup_page.dart';
 
@@ -55,46 +56,63 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Container(
                 height: 450,
                 width: double.infinity,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('assets/images/background.png'),
-                    fit: BoxFit.cover,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 450,
+                    autoPlay: true,
+                    enlargeCenterPage: false,
+                    viewportFraction: 1.0,
                   ),
-                ),
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [
-                        Colors.blueAccent.withOpacity(0.6),
-                        Colors.transparent,
-                      ],
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Monitor your',
-                        style: TextStyle(
-                          fontSize: 24,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                      Text(
-                        'Health Condition timely',
-                        style: TextStyle(
-                          fontSize: 32,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+                  items: ['1.jpeg', '2.jpeg', '3.jpeg'].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/$i'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  Colors.blueAccent.withOpacity(0.6),
+                                  Colors.transparent,
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Monitor your',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                Text(
+                                  'Health Condition timely',
+                                  style: TextStyle(
+                                    fontSize: 32,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
                 ),
               ),
             ),
