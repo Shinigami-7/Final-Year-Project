@@ -127,24 +127,18 @@ class LoginPage extends StatelessWidget {
                   thickness: 2,
                 ),
               ),
-                 Padding(
-                   padding: const EdgeInsets.all(10.0),
-                   child: GestureDetector(
-                     onTap: (){
-                   Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => SignUpScreen()),
-                   );
-                     },
-                     child:Text("Create new account",style: TextStyle(color: Colors.white),),
-                   ),
-                 ),
-
-
-
-
-
-
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()),
+                    );
+                  },
+                  child:Text("Create new account",style: TextStyle(color: Colors.white),),
+                ),
+              ),
             ],
           ),
         ),
