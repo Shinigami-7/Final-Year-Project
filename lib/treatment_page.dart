@@ -6,7 +6,12 @@ class TreatmentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Treatment Page'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: const Icon(Icons.person, color: Colors.blue),
+          ),
+        ],
       ),
       body: const Center(
         child: Text('This is the Treatment page'),

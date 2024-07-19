@@ -22,7 +22,6 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(20),
