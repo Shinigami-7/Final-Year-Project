@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profile.dart';
 class TreatmentPage extends StatelessWidget {
   const TreatmentPage({Key? key}) : super(key: key);
 
@@ -7,9 +8,14 @@ class TreatmentPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: const Icon(Icons.person, color: Colors.blue),
+          IconButton(
+            icon: Icon(Icons.person, color: Colors.blue,),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+            },
           ),
         ],
       ),

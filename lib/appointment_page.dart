@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "notification.dart";
 class Appointment extends StatelessWidget {
   const Appointment({Key? key}) : super(key: key);
 
@@ -7,9 +8,14 @@ class Appointment extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: const Icon(Icons.notifications, color: Colors.blue),
+          IconButton(
+            icon: Icon(Icons.notification_add, color: Colors.blue,),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NotificationPage()),
+              );
+            },
           ),
         ],
       ),

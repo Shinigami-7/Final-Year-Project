@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'notification.dart';
+
 class TodayPage extends StatelessWidget {
   const TodayPage({Key? key}) : super(key: key);
 
@@ -23,9 +25,14 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: const Icon(Icons.notifications, color: Colors.blue),
+          IconButton(
+            icon: Icon(Icons.notification_add, color: Colors.blue,),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NotificationPage()),
+              );
+            },
           ),
         ],
       ),
