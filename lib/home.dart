@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'appointment_page.dart';
+import 'today_page.dart';
+import 'report_page.dart';
+import 'treatment_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,72 +14,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Bottom Navigation Example',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        bottomNavigationBarTheme: BottomNavigationBarThemeData(
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-        ),
       ),
       home: const Home(),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+
+  static const List<Widget> _widgetOptions = <Widget>[
+    TodayPage(),
+    Appointment(),
+    ReportPage(),
+    TreatmentPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: const Icon(Icons.notifications, color: Colors.blue),
-          ),
-        ],
-      ),
       backgroundColor: Colors.lightBlueAccent,
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
-              "Sunday",
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '23 June',
-              style: TextStyle(fontSize: 18, color: Colors.black),
-            ),
-            SizedBox(height: 20),
-            ReminderCard(
-              title: 'Mylod 2.5',
-              subtitle: 'High Blood Pressure',
-              time: '8:00 AM',
-            ),
-            ReminderCard(
-              title: 'Metformin',
-              subtitle: 'Diabetes Type 2',
-              time: '11:00 AM',
-            ),
-            ReminderCard(
-              title: 'Mylod 2.5',
-              subtitle: 'High Blood Pressure',
-              time: '8:00 PM',
-            ),
-          ],
-        ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.blue,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.grey,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.today),
@@ -94,53 +78,6 @@ class Home extends StatelessWidget {
             label: 'Treatment',
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ReminderCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String time;
-
-  const ReminderCard({
-    Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.time,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      child: Card(
-        color: Colors.lightGreenAccent,
-        elevation: 4,
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                subtitle,
-                style: const TextStyle(color: Colors.black),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                time,
-                style: const TextStyle(fontSize: 16, color: Colors.blue),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
