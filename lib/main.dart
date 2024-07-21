@@ -47,156 +47,158 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         child: Column(
-            children: [
-        ClipRRect(
-        borderRadius: const BorderRadius.only(
-            bottomLeft: Radius.circular(30.0),
-        bottomRight: Radius.circular(30.0),
-      ),
-      child: Container(
-        height: 450,
-        width: double.infinity,
-        child: CarouselSlider(
-          options: CarouselOptions(
-            height: 450,
-            autoPlay: true,
-            enlargeCenterPage: false,
-            viewportFraction: 1.0,
-          ),
-          items: ['1.jpeg', '2.jpeg', '3.jpeg'].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('assets/images/$i'),
-                      fit: BoxFit.cover,
-                    ),
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0),
+              ),
+              child: Container(
+                height: 450,
+                width: double.infinity,
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    height: 450,
+                    autoPlay: true,
+                    enlargeCenterPage: false,
+                    viewportFraction: 1.0,
                   ),
-                  child: Container(
-                    padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.bottomCenter,
-                        end: Alignment.topCenter,
-                        colors: [
-                          Colors.blueAccent.withOpacity(0.6),
-                          Colors.transparent,
-                        ],
+                  items: ['1.jpeg', '2.jpeg', '3.jpeg'].map((i) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/$i'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.bottomCenter,
+                                end: Alignment.topCenter,
+                                colors: [
+                                  Colors.blueAccent.withOpacity(0.6),
+                                  Colors.transparent,
+                                ],
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Monitor your',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                Text(
+                                  'Health Condition timely',
+                                  style: TextStyle(
+                                    fontSize: 32,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/Timed logo-01.png',
+                    width: 400,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
+                  Text(
+                    'Start your medication routine with us',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 90,
+                        vertical: 10,
                       ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Monitor your',
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text(
-                          'Health Condition timely',
-                          style: TextStyle(
-                            fontSize: 32,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      'LOGIN',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                );
-              },
-            );
-          }).toList(),
-        ),
-      ),
-    ),
-    Expanded(
-    child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    Image.asset(
-    'assets/images/Timed logo-01.png',
-    width: 400,
-    height: 200,
-    fit: BoxFit.contain,
-    ),
-    Text(
-    'Start your medication routine with us',
-    style: TextStyle(
-    fontSize: 18,
-    color: Colors.grey[700],
-    fontWeight: FontWeight.bold,
-    ),
-    textAlign: TextAlign.center,
-    ),
-    SizedBox(height: 8),
-    ElevatedButton(
-    onPressed: () {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const LoginPage()),
-    );
-    },
-    style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.green,
-    padding: EdgeInsets.symmetric(
-    horizontal: 90,
-    vertical: 10,
-    ),
-    ),
-    child: Text(
-    'LOGIN',
-    style: TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 20,
-    color: Colors.white,
-    ),
-    ),
-    ),
-    SizedBox(height: 20),
-    Text(
-    "Doesn't have an account yet?",
-    style: TextStyle(
-    fontSize: 18,
-    color: Colors.grey[700],
-    fontWeight: FontWeight.bold,
-    ),
-    textAlign: TextAlign.center,
-    ),
-    SizedBox(height: 8),
-    ElevatedButton(
-    onPressed: () {
-    Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const SignupPage()),
-    );
-    },
-    style: ElevatedButton.styleFrom(
-    backgroundColor: Colors.blue,
-    padding: EdgeInsets.symmetric(
-    horizontal: 80,
-    vertical: 10,
-    ),
-    ),
-    child: Text(
-    'SIGN UP',
-    style: TextStyle(
-    fontWeight: FontWeight.bold,
-    fontSize: 20,
-    color: Colors.white,
-    ),
-    ),
-    ),
-    ],
-    ),
-    ),
-            ],
+                  SizedBox(height: 20),
+                  Text(
+                    "Doesn't have an account yet?",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 80,
+                        vertical: 10,
+                      ),
+                    ),
+                    child: Text(
+                      'SIGN UP',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
