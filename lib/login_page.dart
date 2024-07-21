@@ -116,8 +116,6 @@ class LoginPage extends StatelessWidget {
                       Text('Continue with Google'),
                     ],
                   ),
-
-
                 ),
               ),
               Padding(
