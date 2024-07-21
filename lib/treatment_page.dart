@@ -10,7 +10,10 @@ class TreatmentPage extends StatelessWidget {
 
         actions: [
           IconButton(
-            icon: Icon(Icons.person, color: Colors.blue,),
+            icon: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Icon(Icons.person, color: Colors.blue),
+            ),
             onPressed: () {
               Navigator.push(
                 context,
