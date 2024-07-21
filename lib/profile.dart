@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectk/account_info.dart';
 import 'package:projectk/treatment_page.dart';
 
 class Profile extends StatelessWidget {
@@ -75,10 +76,17 @@ class Profile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:25.0),
-                    child: Text(
-                      "Account Info",
-                      style: TextStyle(
-                        fontSize: 18,
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>AccountInfo()),
+                        );
+                      },
+
+                      child: Text(
+                        "Account Info",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
