@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectk/home.dart';
-import 'package:projectk/signup_page.dart';
+import 'home.dart';
+import 'signup_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -98,7 +98,6 @@ class LoginPage extends StatelessWidget {
                   ),
 
                 ),
- logout
               ),
               SizedBox(height: 10,),
               Container(
@@ -140,47 +139,6 @@ class LoginPage extends StatelessWidget {
                   child:Text("Create new account",style: TextStyle(color: Colors.white),),
                 ),
               ),
-
-              ),
-              SizedBox(height: 10,),
-              Container(
-                width: 240,
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: (){},
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset('assets/images/google.png', height: 20,width: 50,),
-                      Text('Continue with Google'),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0),
-                child: Divider(
-                  color: Colors.white,
-                  thickness: 2,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: GestureDetector(
-                  onTap: (){
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()),
-                    );
-                  },
-                  child:Text("Create new account",style: TextStyle(color: Colors.white),),
-                ),
-              ),
- main
             ],
           ),
         ),

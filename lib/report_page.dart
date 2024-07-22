@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
- logout
 import 'notification.dart';
-
- main
 class ReportPage extends StatelessWidget {
   const ReportPage({Key? key}) : super(key: key);
 
@@ -11,7 +8,6 @@ class ReportPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         actions: [
- logout
           IconButton(
             icon: Icon(Icons.notification_add, color: Colors.blue,),
             onPressed: () {
@@ -20,11 +16,6 @@ class ReportPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => NotificationPage()),
               );
             },
-
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: const Icon(Icons.notifications, color: Colors.blue),
- main
           ),
         ],
       ),

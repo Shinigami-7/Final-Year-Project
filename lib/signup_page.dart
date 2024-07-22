@@ -17,7 +17,48 @@ class SignupPage extends StatelessWidget {
   }
 }
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController fullNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  String errorText = '';
+
+  @override
+  void dispose() {
+    fullNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  void signUp() {
+    String fullName = fullNameController.text;
+    String email = emailController.text;
+    String password = passwordController.text;
+    String confirmPassword = confirmPasswordController.text;
+
+    if (password == confirmPassword) {
+      // Passwords match, proceed with sign up logic
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    } else {
+      // Passwords don't match, show error message
+      setState(() {
+        errorText = 'Passwords do not match!';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +83,7 @@ class SignUpScreen extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
                 TextField(
+                  controller: fullNameController,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.person),
                     hintText: 'Full Name',
@@ -53,8 +95,8 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                // Email Address TextField
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     hintText: 'Email Address',
@@ -66,8 +108,8 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                // Password TextField
                 TextField(
+                  controller: passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
@@ -80,8 +122,8 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 20),
-                // Confirm Password TextField
                 TextField(
+                  controller: confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.lock),
@@ -91,17 +133,12 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     filled: true,
                     fillColor: Colors.white,
+                    errorText: errorText.isNotEmpty ? errorText : null,
                   ),
                 ),
                 SizedBox(height: 30),
-                // Sign Up Button
                 ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
-                    );
-                  },
+                  onPressed: signUp,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
