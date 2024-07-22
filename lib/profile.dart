@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:projectk/account_info.dart';
 import 'package:projectk/treatment_page.dart';
+ logout
 import 'logout.dart';
+
+ main
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -11,6 +14,13 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
 
+ logout
+
+
+
+        // automaticallyImplyLeading: false,
+
+ main
       ),
       body: Container(
         color: Colors.amber,
@@ -125,6 +135,7 @@ class Profile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:25.0),
+ logout
                     child: GestureDetector(
                       onTap: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>Logout()),
@@ -152,3 +163,25 @@ class Profile extends StatelessWidget {
     );
   }
 }
+
+                    child: Text(
+                      "Log Out",
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ],
+
+              ),
+
+
+            ),
+
+          ],
+        ),
+      ),
+    );
+  }
+}
+ main
