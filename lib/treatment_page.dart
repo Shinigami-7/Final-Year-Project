@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:projectk/notification.dart';
+import 'package:projectk/add_med.dart';
 import 'profile.dart';
 
 class TreatmentPage extends StatelessWidget {
@@ -116,17 +116,17 @@ class TreatmentPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Mylod 2.5",
+                              "Metformin",
                               style: TextStyle(
                                   fontSize: 20, color: Colors.blueGrey),
                             ),
                             Text(
-                              "High blood pressure",
+                              "Diabetes type 2",
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
                             Text(
-                              "8:00 AM and 8:00 PM",
+                              "11 AM",
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
@@ -137,10 +137,10 @@ class TreatmentPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 20.0),
                         child: CircularProgressIndicator(
-                          value: 0.7,
+                          value: 0.2,
                           backgroundColor: Colors.grey,
                           valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.yellow),
+                          AlwaysStoppedAnimation<Color>(Colors.red),
                         ),
                       ),
                     ],
@@ -156,7 +156,7 @@ class TreatmentPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => NotificationPage()),
+                  MaterialPageRoute(builder: (context) => AddMed()),
                 );
               },
               child: Icon(Icons.add),
