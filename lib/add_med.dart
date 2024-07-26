@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:projectk/treatment_page.dart';
@@ -31,7 +30,18 @@ class AddMed extends StatelessWidget {
                 children: [
                   Text("Unit", style: TextStyle(fontSize: 20),),
                   Spacer(),
-                  Text("Pills",style: TextStyle(fontSize: 20)),
+                  DropdownMenu(
+                    hintText: "select",
+                    // enableSearch: true,
+                    // enableFilter: true,
+
+                    dropdownMenuEntries: <DropdownMenuEntry<Text>>[
+
+                      DropdownMenuEntry(value: Text("Mylod 2.5"), label: "Mylod 2.5"),
+                      DropdownMenuEntry(value: Text("Mylod 5"), label: "Mylod 5"),
+                      DropdownMenuEntry(value: Text("Metformin"), label: "Metformin"),
+                      DropdownMenuEntry(value: Text("Cat"), label: "car"),
+                    ],)
                 ],
               ),
             ),
