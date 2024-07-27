@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:projectk/treatment_page.dart';
 
-class AddMed extends StatelessWidget {
-  const AddMed ({super.key});
+class AddMed2 extends StatelessWidget {
+  const AddMed2 ({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

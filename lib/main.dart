@@ -35,9 +35,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -57,11 +54,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 bottomRight: Radius.circular(30.0),
               ),
               child: Container(
-                height: screenHeight * 0.5, // Responsive height
+                height: 450,
                 width: double.infinity,
                 child: CarouselSlider(
                   options: CarouselOptions(
-                    height: screenHeight * 0.5,
+                    height: 450,
                     autoPlay: true,
                     enlargeCenterPage: false,
                     viewportFraction: 1.0,
@@ -120,16 +117,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/Timed logo-01.png',
-                      width: screenWidth * 0.8,
-                      height: screenHeight * 0.2,
-                      fit: BoxFit.contain,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -153,8 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginPage()),
+                        MaterialPageRoute(builder: (context) => const LoginPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -163,39 +149,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         horizontal: 90,
                         vertical: 10,
                       ),
-
                     ),
-                    Text(
-                      'Start your medication routine with us',
+                    child: Text(
+                      'LOGIN',
                       style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey[700],
                         fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.white,
                       ),
-                      textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const LoginPage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: screenWidth * 0.3,
-                          vertical: 10,
-                        ),
-                      ),
-                      child: Text(
-                        'LOGIN',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
                   ),
                   SizedBox(height: 20),
                   Text(
@@ -212,8 +174,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignupPage()),
+                        MaterialPageRoute(builder: (context) => const SignupPage()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
@@ -223,42 +184,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         vertical: 10,
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Doesn't have an account yet?",
+                    child: Text(
+                      'SIGN UP',
                       style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey[700],
                         fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(height: 8),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => const SignupPage()),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: screenWidth * 0.3,
-                          vertical: 10,
-                        ),
-                      ),
-                      child: Text(
-                        'SIGN UP',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+                        fontSize: 20,
+                        color: Colors.white,
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
