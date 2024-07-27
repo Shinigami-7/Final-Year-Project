@@ -130,6 +130,40 @@ class _MyHomePageState extends State<MyHomePage> {
                       width: screenWidth * 0.8,
                       height: screenHeight * 0.2,
                       fit: BoxFit.contain,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/images/Timed logo-01.png',
+                    width: 400,
+                    height: 200,
+                    fit: BoxFit.contain,
+                  ),
+                  Text(
+                    'Start your medication routine with us',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.green,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 90,
+                        vertical: 10,
+                      ),
+
                     ),
                     Text(
                       'Start your medication routine with us',
@@ -162,6 +196,31 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontSize: 20,
                           color: Colors.white,
                         ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Doesn't have an account yet?",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 8),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 80,
+                        vertical: 10,
                       ),
                     ),
                     SizedBox(height: 20),

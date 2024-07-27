@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectk/account_info.dart';
-import 'package:projectk/treatment_page.dart';
+import 'account_info.dart';
+import 'treatment_page.dart';
 import 'logout.dart';
 
 class Profile extends StatelessWidget {
