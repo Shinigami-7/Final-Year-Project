@@ -38,13 +38,26 @@ class _SignUpScreenState extends State<SignUpScreen> {
     confirmPasswordController.dispose();
     super.dispose();
   }
-
+  bool validateEmail(String email) {
+    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+    return emailRegex.hasMatch(email);
+  }
   void signUp() {
     String fullName = fullNameController.text;
     String email = emailController.text;
     String password = passwordController.text;
     String confirmPassword = confirmPasswordController.text;
 
+    if (!validateEmail(email)) {
+      setState(() {
+        errorText = 'Invalid email address!';
+      });
+      return; // Early return if email is invalid
+    } else {
+      setState(() {
+        errorText = ''; // Clear the error message if email is valid
+      });
+    }
     if (password == confirmPassword) {
       // Passwords match, proceed with sign up logic
       Navigator.push(
