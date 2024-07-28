@@ -9,7 +9,7 @@ class AddMed2 extends StatefulWidget {
 }
 
 class _AddMed2State extends State<AddMed2> {
-  int _value = 1;
+  int? _value = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +20,12 @@ class _AddMed2State extends State<AddMed2> {
       body: Column(
         children: [
           Center(
-              child: Image.asset(
-            'assets/images/medicine.png',
-            height: 250,
-            width: 250,
-          )),
+            child: Image.asset(
+              'assets/images/medicine.png',
+              height: 250,
+              width: 250,
+            ),
+          ),
           Text(
             "How often do you take this\n medication?",
             style: TextStyle(fontSize: 20, color: Colors.grey),
@@ -47,18 +48,55 @@ class _AddMed2State extends State<AddMed2> {
                       style: TextStyle(fontSize: 20),
                     ),
                     Spacer(),
-                    Radio(
-                    value: 1,
-                    groupValue: _value,
-                    onChanged: (value){
-                      setState(() {
-                        _value = value;
-                      });
-    })
-
+                    Radio<int?>(
+                      value: 1,
+                      groupValue: _value,
+                      onChanged: (int? value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Twice daily",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Spacer(),
+                    Radio<int?>(
+                      value: 2,
+                      groupValue: _value,
+                      onChanged: (int? value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Thrice daily",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Spacer(),
+                    Radio<int?>(
+                      value: 3,
+                      groupValue: _value,
+                      onChanged: (int? value) {
+                        setState(() {
+                          _value = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ],
             ),
-                    ]
           ),
           Spacer(),
           Padding(
@@ -76,7 +114,7 @@ class _AddMed2State extends State<AddMed2> {
                 child: Text("Next"),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
