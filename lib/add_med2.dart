@@ -9,7 +9,7 @@ class AddMed2 extends StatefulWidget {
 }
 
 class _AddMed2State extends State<AddMed2> {
-  bool _isChecked = false;
+  int _value = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -47,50 +47,18 @@ class _AddMed2State extends State<AddMed2> {
                       style: TextStyle(fontSize: 20),
                     ),
                     Spacer(),
-                    Checkbox(
-                        value: _isChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            _isChecked = value ?? false;
-                          });
-                        })
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "Twice daily",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Spacer(),
-                    Checkbox(
-                        value: _isChecked,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            _isChecked = value ?? false;
-                          });
-                        })
-                  ],
-                ),
-                Row(
-                  children: [
-                    Text(
-                      "Multiple time daily",
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    Spacer(),
-                    Checkbox(
-                        value: _isChecked,
-                        onChanged: (bool? value3) {
-                          setState(() {
-                            _isChecked = value3 ?? false;
-                          });
-                        })
-                  ],
-                ),
+                    Radio(
+                    value: 1,
+                    groupValue: _value,
+                    onChanged: (value){
+                      setState(() {
+                        _value = value;
+                      });
+    })
 
               ],
             ),
+                    ]
           ),
           Spacer(),
           Padding(
