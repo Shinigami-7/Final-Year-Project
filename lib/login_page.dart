@@ -8,10 +8,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login Page'),
-      ),
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topCenter,
@@ -19,30 +18,41 @@ class LoginPage extends StatelessWidget {
             colors: [Colors.lightBlue.shade200, Colors.lightBlue.shade400],
           ),
         ),
-        child: Center(
-          child: Column(
-            children: [
-              Image.asset('assets/images/Timed logo-01.png',
-                  width: 300, height: 250, fit: BoxFit.contain),
-              Container(
-                width: 350,
-                child: TextField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.person),
-                    hintText: 'Username',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(15.0),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(height: 20),
+                Image.asset(
+                  'assets/images/Timed logo-01.png',
+                  width: 300,
+                  height: 300,
+                  fit: BoxFit.contain,
+                ),
+                SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: 350),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person),
+                      hintText: 'Username',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
                     ),
-                    filled: true,
-                    fillColor: Colors.white,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 8.0),
-                child: Container(
-                  width: 350,
+                SizedBox(height: 8),
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: 350),
                   child: TextField(
+                    obscureText: true,
                     decoration: InputDecoration(
                       prefixIcon: Icon(Icons.lock),
                       hintText: 'Password',
@@ -54,12 +64,10 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Container(
-                  width: 170,
+                SizedBox(height: 16),
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: 170),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -80,66 +88,69 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-              SizedBox(height: 10,),
-              Text("or", style: TextStyle(fontSize: 20),),
-              Container(
-                width: 240,
-                height: 40,
-                child: ElevatedButton.icon(
-                  onPressed: (){},
-                  icon: Icon(Icons.facebook), // ReflixIcon to display on the left of the button text
-                  label: Text('Continue with Facebook'), // Text to display on the button
-                  style: ElevatedButton.styleFrom(
-                    // Style customization for the button
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                SizedBox(height: 20), // Adjust spacing as needed
+                Text(
+                  "Welcome back! Please log in to continue.",
+                  style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.w500),
+                ),
+                SizedBox(height: 20), // Add space before social media buttons
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: 240),
+                  height: 40,
+                  child: ElevatedButton.icon(
+                    onPressed: () {},
+                    icon: Icon(Icons.facebook, size: 20),
+                    label: Text('Continue with Facebook', style: TextStyle(fontSize: 12)),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
-
                 ),
-              ),
-              SizedBox(height: 10,),
-              Container(
-                width: 240,
-                height: 40,
-                child: ElevatedButton(
-                  onPressed: (){},
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                SizedBox(height: 10),
+                Container(
+                  width: double.infinity,
+                  constraints: BoxConstraints(maxWidth: 240),
+                  height: 40,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset('assets/images/google.png', height: 20, width: 50),
+                        SizedBox(width: 8),
+                        Text('Continue with Google', style: TextStyle(fontSize: 12)),
+                      ],
                     ),
                   ),
-                  child: Row(
-                    children: [
-                      Image.asset('assets/images/google.png', height: 20,width: 50,),
-                      Text('Continue with Google'),
-                    ],
-                  ),
-
-
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0),
-                child: Divider(
+                SizedBox(height: 30),
+                Divider(
                   color: Colors.white,
                   thickness: 2,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: GestureDetector(
-                  onTap: (){
+                SizedBox(height: 16),
+                GestureDetector(
+                  onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => SignUpScreen()),
                     );
                   },
-                  child:Text("Create new account",style: TextStyle(color: Colors.white),),
+                  child: Text(
+                    "Create new account",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
