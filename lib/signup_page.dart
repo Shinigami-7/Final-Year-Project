@@ -52,20 +52,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
       setState(() {
         errorText = 'Invalid email address!';
       });
-      return; // Early return if email is invalid
+      return;
     } else {
       setState(() {
-        errorText = ''; // Clear the error message if email is valid
+        errorText = '';
       });
     }
     if (password == confirmPassword) {
-      // Passwords match, proceed with sign up logic
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),
       );
     } else {
-      // Passwords don't match, show error message
       setState(() {
         errorText = 'Passwords do not match!';
       });
