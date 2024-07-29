@@ -26,7 +26,7 @@ class Logout extends StatelessWidget {
             padding: EdgeInsets.all(20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.pink[50],
+              color: Colors.white,
             ),
             height: 250,
             child: Column(
@@ -34,18 +34,14 @@ class Logout extends StatelessWidget {
               children: <Widget>[
                 Icon(
                   Icons.exit_to_app,
-                  size: 50,
-                  color: Colors.black54,
+                  size: 60,
+                  color: Colors.redAccent,
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "Oh no! You’re leaving...",
-                  style: TextStyle(fontSize: 18, color: Colors.black54),
-                ),
-                SizedBox(height: 5),
-                Text(
-                  "Are you sure?",
-                  style: TextStyle(fontSize: 16, color: Colors.black54),
+                  "Are you sure you want to log out?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -57,7 +53,7 @@ class Logout extends StatelessWidget {
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
-                        child: Text("Naah, Just Kidding"),
+                        child: Text("No, Stay Here"),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                           shape: RoundedRectangleBorder(
@@ -67,14 +63,18 @@ class Logout extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 130, // Set the desired width
+                      width: 130,
                       child: OutlinedButton(
                         onPressed: () {
                           Navigator.of(context).pop();
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => LandingPage()),
+                          ); // Navigate to the landing page
                         },
                         child: Text("Yes, Log Me Out"),
                         style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.blue,
+                          backgroundColor: Colors.redAccent, // Text color
+                          side: BorderSide(color: Colors.redAccent), // Border color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -101,7 +101,27 @@ class Logout extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () => _showLogoutDialog(context),
           child: Text("Log Out"),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.blue,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class LandingPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Landing Page'),
+      ),
+      body: Center(
+        child: Text('Welcome to the Landing Page!'),
       ),
     );
   }
