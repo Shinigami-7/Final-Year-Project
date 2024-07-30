@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
+import 'profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,15 +10,27 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Logout(),
     );
   }
 }
 
 class Logout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance?.addPostFrameCallback((_) => _showLogoutDialog(context));
+    return Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
+
   void _showLogoutDialog(BuildContext context) {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return Dialog(
           shape: RoundedRectangleBorder(
@@ -41,7 +55,11 @@ class Logout extends StatelessWidget {
                 Text(
                   "Are you sure you want to log out?",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black87),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -51,7 +69,9 @@ class Logout extends StatelessWidget {
                       width: 130,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => Profile()),
+                          );
                         },
                         child: Text("No, Stay Here"),
                         style: ElevatedButton.styleFrom(
@@ -66,15 +86,14 @@ class Logout extends StatelessWidget {
                       width: 130,
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.of(context).pop();
                           Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => LandingPage()),
-                          ); // Navigate to the landing page
+                            MaterialPageRoute(builder: (context) =>  MyHomePage(title: 'LOADING_PAGE')),
+                          );
                         },
                         child: Text("Yes, Log Me Out"),
                         style: OutlinedButton.styleFrom(
-                          backgroundColor: Colors.redAccent, // Text color
-                          side: BorderSide(color: Colors.redAccent), // Border color
+                          backgroundColor: Colors.redAccent,
+                          side: BorderSide(color: Colors.redAccent),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
@@ -88,41 +107,6 @@ class Logout extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home Page'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () => _showLogoutDialog(context),
-          child: Text("Log Out"),
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class LandingPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Landing Page'),
-      ),
-      body: Center(
-        child: Text('Welcome to the Landing Page!'),
-      ),
     );
   }
 }
