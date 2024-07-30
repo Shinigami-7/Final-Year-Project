@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projectk/treatment_page.dart';
+import 'package:projectk/add_med3.dart';
 
 class AddMed2 extends StatefulWidget {
   const AddMed2({super.key});
@@ -108,7 +108,7 @@ class _AddMed2State extends State<AddMed2> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => TreatmentPage()),
+                    MaterialPageRoute(builder: (context) => AddMed3()),
                   );
                 },
                 child: Text("Next"),
