@@ -13,12 +13,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-          fontFamily: 'Poppins'
+        fontFamily: 'Poppins',
       ),
       home: const MyHomePage(title: 'LOADING_PAGE'),
     );
@@ -48,96 +47,98 @@ class _MyHomePageState extends State<MyHomePage> {
             colors: [Colors.white, Colors.greenAccent],
           ),
         ),
-        child: Column(
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(30.0),
-                bottomRight: Radius.circular(30.0),
-              ),
-              child: Container(
-                height: 450,
-                width: double.infinity,
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                    height: 450,
-                    autoPlay: true,
-                    enlargeCenterPage: false,
-                    viewportFraction: 1.0,
-                  ),
-                  items: ['1.jpeg', '2.jpeg', '3.jpeg'].map((i) {
-                    return Builder(
-                      builder: (BuildContext context) {
-                        return Container(
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/$i'),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(30.0),
+                  bottomRight: Radius.circular(30.0),
+                ),
+                child: Container(
+                  height: 400,
+                  width: double.infinity,
+                  child: CarouselSlider(
+                    options: CarouselOptions(
+                      height: 400,
+                      autoPlay: true,
+                      enlargeCenterPage: false,
+                      viewportFraction: 1.0,
+                    ),
+                    items: ['1.jpeg', '2.jpeg', '3.jpeg'].map((i) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: double.infinity,
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter,
-                                colors: [
-                                  Colors.blueAccent.withOpacity(0.6),
-                                  Colors.transparent,
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/$i'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            child: Container(
+                              padding: EdgeInsets.fromLTRB(30, 0, 0, 30),
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.bottomCenter,
+                                  end: Alignment.topCenter,
+                                  colors: [
+                                    Colors.blueAccent.withOpacity(0.6),
+                                    Colors.transparent,
+                                  ],
+                                ),
+                              ),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Monitor your',
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Health Condition timely',
+                                    style: TextStyle(
+                                      fontSize: 32,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Monitor your',
-                                  style: TextStyle(
-                                    fontSize: 24,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                                Text(
-                                  'Health Condition timely',
-                                  style: TextStyle(
-                                    fontSize: 32,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  }).toList(),
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
-            Expanded(
-              child: Column(
+              SizedBox(height: 0),
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/images/Timed logo-01.png',
-                    width: 400,
+                    width: 300,
                     height: 200,
                     fit: BoxFit.contain,
                   ),
+                  SizedBox(height: 0),
                   Text(
                     'Start your medication routine with us',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -156,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       'LOGIN',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
@@ -165,13 +166,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text(
                     "Doesn't have an account yet?",
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
                       color: Colors.grey[700],
                       fontWeight: FontWeight.bold,
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 8),
+                  SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -190,15 +191,15 @@ class _MyHomePageState extends State<MyHomePage> {
                       'SIGN UP',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                        fontSize: 18,
                         color: Colors.white,
                       ),
                     ),
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
