@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projectk/add_med2.dart';
-import 'package:projectk/treatment_page.dart';
 
 class AddMed extends StatefulWidget {
   @override

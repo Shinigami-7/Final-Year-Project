@@ -115,7 +115,9 @@ class _AddMed2State extends State<AddMed2> {
               ),
             ),
           ),
+
         ],
+        
       ),
     );
   }
