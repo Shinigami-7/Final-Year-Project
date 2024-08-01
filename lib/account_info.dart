@@ -10,6 +10,8 @@ class AccountInfo extends StatelessWidget {
       appBar: AppBar(
 
         // automaticallyImplyLeading: false,
+        title: Text("Account Info", style: TextStyle(
+            color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 25),),
 
       ),
       body: Container(
@@ -23,27 +25,7 @@ class AccountInfo extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
 
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text('Account Info',
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.w900,
-                            color: Colors.blue,
-                          )),
-                    ),
-                    IconButton(
-                      icon: Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.blue,
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Profile()),
-                        );
-                      },
-                    ),
+
                     Center(
                       child: Padding(
                         padding: const EdgeInsets.only(top: 20.0),

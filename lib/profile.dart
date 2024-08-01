@@ -5,34 +5,24 @@ import 'logout.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
+  void _username(){
+    TextField();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-
+        title: Text("Profile", style: TextStyle(
+            color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 25),),
       ),
       body: Container(
         color: Colors.amber,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text('Profile',style: TextStyle(fontSize: 25,
-                fontWeight: FontWeight.w900,
-                color: Colors.blue,)),
-            ),
-            IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.blue,),
-              onPressed: () {
-                Navigator.push(
-                  context,
 
-                  MaterialPageRoute(builder: (context) => TreatmentPage()),
-                );
-              },
-            ),
+
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0),
@@ -49,12 +39,15 @@ class Profile extends StatelessWidget {
             Center(
               child: Padding(
                 padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  "@user1234567",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                child: MaterialButton(
+                  onPressed: _username,
+                  child: Text(
+                    "@user1234567",
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),

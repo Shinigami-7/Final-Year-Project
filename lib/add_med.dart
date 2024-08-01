@@ -20,6 +20,7 @@ class _AddMedState extends State<AddMed> {
     "Lisinopril",
     "Metoprolol",
     "Simvastatin",
+
   ];
 
   @override

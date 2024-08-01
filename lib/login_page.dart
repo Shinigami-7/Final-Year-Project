@@ -4,9 +4,13 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'home.dart';
 import 'signup_page.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class LoginPage extends StatefulWidget {
 
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   Future<void> _loginWithFacebook(BuildContext context) async {
     try {
       final LoginResult result = await FacebookAuth.instance.login();
