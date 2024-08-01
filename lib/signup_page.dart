@@ -61,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     if (password == confirmPassword) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const LoginPage()),
+        MaterialPageRoute(builder: (context) =>  LoginPage()),
       );
     } else {
       setState(() {
@@ -167,7 +167,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const LoginPage()),
+                      MaterialPageRoute(builder: (context) =>  LoginPage()),
                     );
                   },
                   child: Text(
