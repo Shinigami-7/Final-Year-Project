@@ -100,10 +100,13 @@ class _AddMed3State extends State<AddMed3> {
 
                                 ),
                               ),
-                            )
+                            ),
+                            Text("pill(s)")
+
                           ],
                         ),
                       ),
+
                     ],
                   ),
                   Text(
@@ -134,10 +137,11 @@ class _AddMed3State extends State<AddMed3> {
                                   decoration: InputDecoration(
                                     border: UnderlineInputBorder(),
                                     hintText: "1",
-
                                 ),
                               ),
-                              )
+                              ),
+                              Text("pill(s)")
+
                             ],
                            ),
                          ),
