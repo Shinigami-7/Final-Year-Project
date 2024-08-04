@@ -23,55 +23,51 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Sunday",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  '23 June',
-                  style: TextStyle(fontSize: 18, color: Colors.black),
-                ),
-                SizedBox(height: 20),
-                ReminderCard(
-                  title: 'Mylod 2.5',
-                  subtitle: 'High Blood Pressure',
-                  time: '8:00 AM',
-                ),
-                ReminderCard(
-                  title: 'Metformin',
-                  subtitle: 'Diabetes Type 2',
-                  time: '11:00 AM',
-                ),
-                ReminderCard(
-                  title: 'Mylod 2.5',
-                  subtitle: 'High Blood Pressure',
-                  time: '8:00 PM',
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            right: 20,
-            top: 40,
-            child: IconButton(
-              icon: Icon(Icons.notification_add, color: Colors.white, size: 30),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => NotificationPage()),
-                );
-              },
-            ),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: Icon(Icons.notification_add, color: Colors.blue,),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => NotificationPage()),
+              );
+            },
           ),
         ],
+      ),
+      backgroundColor: Colors.lightBlueAccent,
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
+            Text(
+              "Sunday",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              '23 June',
+              style: TextStyle(fontSize: 18, color: Colors.black),
+            ),
+            SizedBox(height: 20),
+            ReminderCard(
+              title: 'Mylod 2.5',
+              subtitle: 'High Blood Pressure',
+              time: '8:00 AM',
+            ),
+            ReminderCard(
+              title: 'Metformin',
+              subtitle: 'Diabetes Type 2',
+              time: '11:00 AM',
+            ),
+            ReminderCard(
+              title: 'Mylod 2.5',
+              subtitle: 'High Blood Pressure',
+              time: '8:00 PM',
+            ),
+          ],
+        ),
       ),
     );
   }

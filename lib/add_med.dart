@@ -20,14 +20,13 @@ class _AddMedState extends State<AddMed> {
     "Lisinopril",
     "Metoprolol",
     "Simvastatin",
-
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Medicine add Page'),
+        title: Text('Medicine Add Page'),
       ),
       body: Column(
         children: [
@@ -84,10 +83,16 @@ class _AddMedState extends State<AddMed> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddMed2()),
-                  );
+                  if (selectedMedication != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => AddMed2()),
+                    );
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Please select a medication")),
+                    );
+                  }
                 },
                 child: Text("Next"),
               ),

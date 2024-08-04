@@ -1,64 +1,10 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'home.dart';
 import 'signup_page.dart';
 
-class LoginPage extends StatefulWidget {
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  Future<void> _loginWithFacebook(BuildContext context) async {
-    try {
-      final LoginResult result = await FacebookAuth.instance.login();
-      if (result.status == LoginStatus.success) {
-        final AccessToken accessToken = result.accessToken!;
-        // Use accessToken to authenticate with your backend or do further actions
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Facebook login successful')),
-        );
-        print('Facebook login successful: $accessToken');
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Facebook login failed: ${result.status}')),
-        );
-        print('Facebook login failed: ${result.status}');
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error during Facebook login: $e')),
-      );
-      print('Error during Facebook login: $e');
-    }
-  }
-
-  Future<void> _loginWithGoogle(BuildContext context) async {
-    try {
-      final GoogleSignIn googleSignIn = GoogleSignIn();
-      final GoogleSignInAccount? account = await googleSignIn.signIn();
-      if (account != null) {
-        final GoogleSignInAuthentication authentication = await account.authentication;
-        // Use authentication to authenticate with your backend or do further actions
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Google login successful')),
-        );
-        print('Google login successful: ${authentication.accessToken}');
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Google login cancelled')),
-        );
-        print('Google login cancelled');
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error during Google login: $e')),
-      );
-      print('Error during Google login: $e');
-    }
-  }
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -154,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                   constraints: BoxConstraints(maxWidth: 240),
                   height: 40,
                   child: ElevatedButton.icon(
-                    onPressed: () => _loginWithFacebook(context),
+                    onPressed: () {},
                     icon: Icon(Icons.facebook, size: 20),
                     label: Text('Continue with Facebook', style: TextStyle(fontSize: 12)),
                     style: ElevatedButton.styleFrom(
@@ -170,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
                   constraints: BoxConstraints(maxWidth: 240),
                   height: 40,
                   child: ElevatedButton(
-                    onPressed: () => _loginWithGoogle(context),
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
