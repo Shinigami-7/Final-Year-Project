@@ -25,7 +25,7 @@ class ReportPage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => const Home()), // Navigate to Home
+                  MaterialPageRoute(builder: (context) => const Home()),
                 );
               },
             ),

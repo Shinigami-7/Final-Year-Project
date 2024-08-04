@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projectk/add_med.dart';
 import 'profile.dart';
+import 'home.dart';
 
 class TreatmentPage extends StatefulWidget {
   const TreatmentPage({Key? key}) : super(key: key);
@@ -14,35 +15,49 @@ class _TreatmentPageState extends State<TreatmentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlueAccent,
       appBar: AppBar(
-        title: Text(
-          "Treatment",
-          style: TextStyle(
-              color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 25),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.person,
-              color: Colors.blue,
-            ),
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.lightBlueAccent,
+        elevation: 0,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20.0, top: 20.0),
+          child: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => Profile()),
+                MaterialPageRoute(builder: (context) => const Home()),
               );
             },
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0, top: 20),
+            child: IconButton(
+              icon: Icon(
+                Icons.person,
+                color: Colors.white,
+                size: 30,
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Profile()),
+                );
+              },
+            ),
           ),
         ],
       ),
       body: Stack(
         children: [
-          Column(
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
+          Padding(
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20), // Matching padding with ReportPage
+            child: Column(
+              children: [
+                Container(
                   height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -88,17 +103,14 @@ class _TreatmentPageState extends State<TreatmentPage> {
                         child: CircularProgressIndicator(
                           value: 0.7,
                           backgroundColor: Colors.grey,
-                          valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.yellow),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
+                SizedBox(height: 20),
+                Container(
                   height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -144,18 +156,17 @@ class _TreatmentPageState extends State<TreatmentPage> {
                         child: CircularProgressIndicator(
                           value: 0.2,
                           backgroundColor: Colors.grey,
-                          valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.red),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Positioned(
-            bottom: 30.0, // Adjust the position as needed
+            bottom: 30.0,
             right: 16.0,
             child: FloatingActionButton(
               onPressed: () {
@@ -164,12 +175,12 @@ class _TreatmentPageState extends State<TreatmentPage> {
                   MaterialPageRoute(builder: (context) => AddMed()),
                 );
               },
-              child: Icon(Icons.add),
+              backgroundColor: Colors.white,
+              child: Icon(Icons.add, color: Colors.lightBlueAccent),
             ),
           ),
         ],
       ),
-
     );
   }
 }
