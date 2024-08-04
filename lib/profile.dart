@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectk/Privacy.dart';
 import 'account_info.dart';
 import 'treatment_page.dart';
 import 'logout.dart';
@@ -28,7 +29,7 @@ class Profile extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 20.0),
                 child: ClipOval(
                   child: Image.asset(
-                    'assets/images/user.png', // Ensure this path is correct
+                    'assets/images/user.png',
                     height: 150,
                     width: 150,
                     fit: BoxFit.cover,
@@ -109,10 +110,17 @@ class Profile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:25.0),
-                    child: Text(
-                      "Privacy",
-                      style: TextStyle(
-                        fontSize: 18,
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Privacy()),
+                        );
+                      },
+
+                      child: Text(
+                        "Privacy",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
@@ -135,10 +143,7 @@ class Profile extends StatelessWidget {
                 ],
 
               ),
-
-
             ),
-
           ],
         ),
       ),
