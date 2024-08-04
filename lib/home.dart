@@ -33,11 +33,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
-  static const List<Widget> _widgetOptions = <Widget>[
-    TodayPage(),
-    Appointment(),
-    ReportPage(),
-    TreatmentPage(),
+  static final List<Widget> _widgetOptions = <Widget>[
+    const TodayPage(),
+    const Appointment(),
+    const ReportPage(),
+    TreatmentPage(value: ""),
   ];
 
   void _onItemTapped(int index) {

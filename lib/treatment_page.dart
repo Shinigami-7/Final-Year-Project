@@ -1,17 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:projectk/add_med.dart';
 import 'profile.dart';
 import 'home.dart';
 
-class TreatmentPage extends StatefulWidget {
-  const TreatmentPage({Key? key}) : super(key: key);
+class TreatmentPage extends StatelessWidget {
+  final String value;
+  TreatmentPage({required this.value});
 
-  @override
-  State<TreatmentPage> createState() => _TreatmentPageState();
-}
-
-class _TreatmentPageState extends State<TreatmentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +48,19 @@ class _TreatmentPageState extends State<TreatmentPage> {
       ),
       body: Stack(
         children: [
+
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+
           Padding(
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20), // Matching padding with ReportPage
             child: Column(
               children: [
                 Container(
+
                   height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -89,11 +92,13 @@ class _TreatmentPageState extends State<TreatmentPage> {
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
+                            Text(value),
                             Text(
                               "8:00 AM and 8:00 PM",
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
+
                           ],
                         ),
                       ),

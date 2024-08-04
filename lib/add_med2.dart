@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectk/add_med3.dart';
 
 class AddMed2 extends StatefulWidget {
-  const AddMed2({super.key});
+
 
   @override
   State<AddMed2> createState() => _AddMed2State();
