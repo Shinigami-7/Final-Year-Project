@@ -5,8 +5,12 @@ import 'profile.dart';
 class TreatmentPage extends StatelessWidget {
   final String value;
   final TimeOfDay firstIntakeTime;
+  final TimeOfDay secondIntakeTime;
+  final TimeOfDay thirdIntakeTime;
   TreatmentPage({required this.value,
-    required this.firstIntakeTime
+    required this.firstIntakeTime,
+    required this.secondIntakeTime,
+    required this.thirdIntakeTime
   });
 
   @override
@@ -71,11 +75,27 @@ class TreatmentPage extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
-                            Text(value),
-                            Text(
-                              (firstIntakeTime.format(context)),
-                              style: TextStyle(
-                                  color: Colors.blueGrey, fontSize: 15),
+                            Text("Dose : ${value}",style: TextStyle(color: Colors.blueGrey, fontSize: 15),),
+                            Row(
+                              children: [
+                                Text(
+                                  (firstIntakeTime.format(context)),
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 15),
+                                ),
+                                SizedBox(width: 10,),
+                                Text(
+                                  (secondIntakeTime.format(context)),
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 15),
+                                ),
+                                SizedBox(width: 10,),
+                                Text(
+                                  (thirdIntakeTime.format(context)),
+                                  style: TextStyle(
+                                      color: Colors.blueGrey, fontSize: 15),
+                                ),
+                              ],
                             ),
 
                           ],
