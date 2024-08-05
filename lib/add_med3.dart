@@ -64,7 +64,6 @@ class _AddMed3State extends State<AddMed3> {
                       MaterialButton(
                         onPressed: () => _showTimePicker((value) {
                           _timeOfDay = value;
-
                         }),
                         child: Text(
                           _timeOfDay.format(context).toString(),
@@ -185,8 +184,11 @@ class _AddMed3State extends State<AddMed3> {
               width: 350,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>TreatmentPage(value: value, firstIntakeTime: _timeOfDay)));
-
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => TreatmentPage(
+                              value: value, firstIntakeTime: _timeOfDay, secondIntakeTime: _timeOfDay1, thirdIntakeTime: _timeOfDay2,)));
                 },
                 child: Text("Done"),
               ),
