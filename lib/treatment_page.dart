@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectk/add_med.dart';
 import 'profile.dart';
-import 'home.dart';
 
 class TreatmentPage extends StatelessWidget {
   final String value;
@@ -10,57 +9,34 @@ class TreatmentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.lightBlueAccent,
-        elevation: 0,
-        leading: Padding(
-          padding: const EdgeInsets.only(left: 20.0, top: 20.0),
-          child: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
-            onPressed: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const Home()),
-              );
-            },
-          ),
+        title: Text(
+          "Treatment",
+          style: TextStyle(
+              color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 25),
         ),
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0, top: 20),
-            child: IconButton(
-              icon: Icon(
-                Icons.person,
-                color: Colors.white,
-                size: 30,
-              ),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Profile()),
-                );
-              },
+          IconButton(
+            icon: Icon(
+              Icons.person,
+              color: Colors.blue,
             ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Profile()),
+              );
+            },
           ),
         ],
       ),
       body: Stack(
         children: [
-
           Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-
-          Padding(
-            padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20), // Matching padding with ReportPage
-            child: Column(
-              children: [
-                Container(
-
                   height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -108,14 +84,17 @@ class TreatmentPage extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: 0.7,
                           backgroundColor: Colors.grey,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.yellow),
+                          valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.yellow),
                         ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 20),
-                Container(
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
                   height: 110,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -161,17 +140,18 @@ class TreatmentPage extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: 0.2,
                           backgroundColor: Colors.grey,
-                          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                          valueColor:
+                          AlwaysStoppedAnimation<Color>(Colors.red),
                         ),
                       ),
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           Positioned(
-            bottom: 30.0,
+            bottom: 30.0, // Adjust the position as needed
             right: 16.0,
             child: FloatingActionButton(
               onPressed: () {
@@ -180,8 +160,7 @@ class TreatmentPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => AddMed()),
                 );
               },
-              backgroundColor: Colors.white,
-              child: Icon(Icons.add, color: Colors.lightBlueAccent),
+              child: Icon(Icons.add),
             ),
           ),
         ],
