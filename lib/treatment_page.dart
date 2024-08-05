@@ -4,7 +4,10 @@ import 'profile.dart';
 
 class TreatmentPage extends StatelessWidget {
   final String value;
-  TreatmentPage({required this.value});
+  final TimeOfDay firstIntakeTime;
+  TreatmentPage({required this.value,
+    required this.firstIntakeTime
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +73,7 @@ class TreatmentPage extends StatelessWidget {
                             ),
                             Text(value),
                             Text(
-                              "8:00 AM and 8:00 PM",
+                              (firstIntakeTime.format(context)),
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
