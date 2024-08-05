@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projectk/Notification_page.dart';
 import 'package:projectk/Privacy.dart';
+import 'package:projectk/setting.dart';
 import 'account_info.dart';
-import 'treatment_page.dart';
 import 'logout.dart';
 
 class Profile extends StatelessWidget {
@@ -83,19 +84,33 @@ class Profile extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:25.0),
-                    child: Text(
-                      "Setting",
-                      style: TextStyle(
-                        fontSize: 18,
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Setting()),
+                        );
+                      },
+
+                      child: Text(
+                        "Setting",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top:25.0),
-                    child: Text(
-                      "Notification",
-                      style: TextStyle(
-                        fontSize: 18,
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Notification_Page()),
+                        );
+                      },
+
+                      child: Text(
+                        "Notification",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                   ),
