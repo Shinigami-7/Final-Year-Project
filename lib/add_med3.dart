@@ -177,7 +177,7 @@ class _AddMed3State extends State<AddMed3> {
               ),
             ),
             SizedBox(
-              height: 210,
+              height: 280,
             ),
             Container(
               height: 50,
