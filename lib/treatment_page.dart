@@ -7,11 +7,11 @@ class TreatmentPage extends StatelessWidget {
   final TimeOfDay firstIntakeTime;
   final TimeOfDay secondIntakeTime;
   final TimeOfDay thirdIntakeTime;
-  TreatmentPage({required this.value,
-    required this.firstIntakeTime,
-    required this.secondIntakeTime,
-    required this.thirdIntakeTime
-  });
+  TreatmentPage(
+      {required this.value,
+      required this.firstIntakeTime,
+      required this.secondIntakeTime,
+      required this.thirdIntakeTime});
 
   @override
   Widget build(BuildContext context) {
@@ -75,29 +75,41 @@ class TreatmentPage extends StatelessWidget {
                               style: TextStyle(
                                   color: Colors.blueGrey, fontSize: 15),
                             ),
-                            Text("Dose : ${value}",style: TextStyle(color: Colors.blueGrey, fontSize: 15),),
-                            Row(
-                              children: [
-                                Text(
-                                  (firstIntakeTime.format(context)),
-                                  style: TextStyle(
-                                      color: Colors.blueGrey, fontSize: 15),
-                                ),
-                                SizedBox(width: 10,),
-                                Text(
-                                  (secondIntakeTime.format(context)),
-                                  style: TextStyle(
-                                      color: Colors.blueGrey, fontSize: 15),
-                                ),
-                                SizedBox(width: 10,),
-                                Text(
-                                  (thirdIntakeTime.format(context)),
-                                  style: TextStyle(
-                                      color: Colors.blueGrey, fontSize: 15),
-                                ),
-                              ],
+                            Text(
+                              "Dose : ${value}",
+                              style: TextStyle(
+                                  color: Colors.blueGrey, fontSize: 15),
                             ),
-
+                            SingleChildScrollView(
+                              child: Row(
+                                children: [
+                                  
+                                  SingleChildScrollView(
+                                    child: Text(
+                                      (firstIntakeTime.format(context)),
+                                      style: TextStyle(
+                                          color: Colors.blueGrey, fontSize: 15),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    (secondIntakeTime.format(context)),
+                                    style: TextStyle(
+                                        color: Colors.blueGrey, fontSize: 15),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Text(
+                                    (thirdIntakeTime.format(context)),
+                                    style: TextStyle(
+                                        color: Colors.blueGrey, fontSize: 15),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -108,7 +120,7 @@ class TreatmentPage extends StatelessWidget {
                           value: 0.7,
                           backgroundColor: Colors.grey,
                           valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.yellow),
+                              AlwaysStoppedAnimation<Color>(Colors.yellow),
                         ),
                       ),
                     ],
@@ -163,8 +175,7 @@ class TreatmentPage extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: 0.2,
                           backgroundColor: Colors.grey,
-                          valueColor:
-                          AlwaysStoppedAnimation<Color>(Colors.red),
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
                         ),
                       ),
                     ],
