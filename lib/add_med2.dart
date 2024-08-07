@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projectk/Today_page.dart';
 import 'package:projectk/add_med3.dart';
+import 'package:projectk/profile.dart';
+import 'package:projectk/report_page.dart';
 
 class AddMed2 extends StatefulWidget {
 
@@ -10,6 +13,30 @@ class AddMed2 extends StatefulWidget {
 
 class _AddMed2State extends State<AddMed2> {
   int? _value = 1;
+  void _navigate() {
+    if (_value != null) {
+      switch (_value) {
+        case 1:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Profile()),
+          );
+          break;
+        case 2:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ReportPage()),
+          );
+          break;
+        case 3:
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => TodayPage()),
+          );
+          break;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +125,7 @@ class _AddMed2State extends State<AddMed2> {
               ],
             ),
           ),
+          Text(_value.toString()),
           Spacer(),
           Padding(
             padding: const EdgeInsets.only(bottom: 18.0, right: 20, left: 20),
@@ -105,12 +133,7 @@ class _AddMed2State extends State<AddMed2> {
               height: 50,
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddMed3()),
-                  );
-                },
+                onPressed: _navigate,
                 child: Text("Next"),
               ),
             ),
