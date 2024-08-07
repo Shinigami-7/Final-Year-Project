@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projectk/Today_page.dart';
+import 'package:projectk/add_med3(1).dart';
+import 'package:projectk/add_med3(2).dart';
 import 'package:projectk/add_med3.dart';
-import 'package:projectk/profile.dart';
-import 'package:projectk/report_page.dart';
 
 class AddMed2 extends StatefulWidget {
 
@@ -19,19 +18,19 @@ class _AddMed2State extends State<AddMed2> {
         case 1:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Profile()),
+            MaterialPageRoute(builder: (context) => AddMed3_1()),
           );
           break;
         case 2:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ReportPage()),
+            MaterialPageRoute(builder: (context) => AddMed3_2()),
           );
           break;
         case 3:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => TodayPage()),
+            MaterialPageRoute(builder: (context) => AddMed3()),
           );
           break;
       }
