@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'profile.dart';
+import 'password_change.dart';
+import 'delete_account.dart';
 
 class Setting extends StatelessWidget {
   const Setting({Key? key}) : super(key: key);
@@ -39,15 +41,15 @@ class Setting extends StatelessWidget {
               leading: Icon(Icons.lock, color: Colors.white),
               title: Text('Change Password', style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Navigate to change password page
+                Navigator.push(context, MaterialPageRoute(builder: (context) => PasswordChange()));
               },
             ),
-            Divider(color: Colors.white),
+            Divider(color: Colors.white), // Moved outside the ListTile
             ListTile(
               leading: Icon(Icons.delete_forever, color: Colors.white),
               title: Text('Delete Account', style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Implement delete account functionality
+                Navigator.push(context, MaterialPageRoute(builder: (context) => deletePage()));
               },
             ),
             Divider(color: Colors.white),
