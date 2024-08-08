@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'treatment_page.dart';
 
 class AddMed3_1 extends StatefulWidget {
-  const AddMed3_1({Key? key}) : super(key: key);
+  final int time;
+
+  const AddMed3_1({ required this.time});
 
   @override
   State<AddMed3_1> createState() => _AddMed3State();
@@ -12,7 +14,9 @@ class _AddMed3State extends State<AddMed3_1> {
   TimeOfDay _timeOfDay = TimeOfDay.now();
   TimeOfDay _timeOfDay1 = TimeOfDay(hour: 0 , minute: 0);
   TimeOfDay _timeOfDay2 = TimeOfDay(hour: 0 , minute: 0);
-  String value = "";
+  int value = 0;
+
+
 
   void _showTimePicker(Function(TimeOfDay) onSelected) {
     showTimePicker(
@@ -49,57 +53,62 @@ class _AddMed3State extends State<AddMed3_1> {
               style: TextStyle(fontSize: 20, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "First intake",
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.access_time_outlined),
-                      MaterialButton(
-                        onPressed: () => _showTimePicker((value) {
-                          _timeOfDay = value;
-                        }),
-                        child: Text(
-                          _timeOfDay.format(context).toString(),
-                          style: TextStyle(fontSize: 20),
+
+            for(int i=0;i<widget.time;i++)
+              Padding(
+                padding: const EdgeInsets.only(top: 8.0, left: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "First intake",
+                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.access_time_outlined),
+                        MaterialButton(
+                          onPressed: () => _showTimePicker((value) {
+                            _timeOfDay = value;
+                          }),
+                          child: Text(
+                            _timeOfDay.format(context).toString(),
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 25),
-                        child: Row(
-                          children: [
-                            Text("Dose"),
-                            SizedBox(width: 8),
-                            Container(
-                              width: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: UnderlineInputBorder(),
-                                  hintText: "1",
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Row(
+                            children: [
+                              Text("Dose"),
+                              SizedBox(width: 8),
+                              Container(
+                                width: 50,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "1",
+                                  ),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      value = value;
+                                    });
+                                  },
                                 ),
-                                onChanged: (text) {
-                                  setState(() {
-                                    value = text;
-                                  });
-                                },
                               ),
-                            ),
-                            Text("pill(s)"),
-                          ],
+                              Text("pill(s)"),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
+
+
+
             Positioned(
               bottom: 16.0,
               child: Container(

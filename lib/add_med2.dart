@@ -4,21 +4,22 @@ import 'package:projectk/add_med3(2).dart';
 import 'package:projectk/add_med3.dart';
 
 class AddMed2 extends StatefulWidget {
-
-
   @override
   State<AddMed2> createState() => _AddMed2State();
 }
 
 class _AddMed2State extends State<AddMed2> {
-  int? _value = 1;
+  int? _value = 0;
   void _navigate() {
     if (_value != null) {
       switch (_value) {
         case 1:
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddMed3_1()),
+            MaterialPageRoute(
+                builder: (context) => AddMed3_1(
+                      time: _value!,
+                    )),
           );
           break;
         case 2:
@@ -33,6 +34,13 @@ class _AddMed2State extends State<AddMed2> {
             MaterialPageRoute(builder: (context) => AddMed3()),
           );
           break;
+        default:
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => AddMed3_1(
+                        time: _value!,
+                      )));
       }
     }
   }
@@ -63,7 +71,8 @@ class _AddMed2State extends State<AddMed2> {
               thickness: 2,
             ),
           ),
-          Padding(
+          SingleChildScrollView(
+              child: Padding(
             padding: const EdgeInsets.only(left: 50.0, right: 50),
             child: Column(
               children: [
@@ -121,25 +130,47 @@ class _AddMed2State extends State<AddMed2> {
                     ),
                   ],
                 ),
+                Row(
+                  children: [
+                    Text(
+                      "Custom",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: UnderlineInputBorder(),
+                            hintText: "1",
+                          ),
+                          onChanged: (value) {
+                            setState(() {
+                              _value = int.tryParse(value);
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                Text(_value.toString()),
+                SizedBox(
+                  height: 50,
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: _navigate,
+                    child: Text("Next"),
+                  ),
+                ),
               ],
             ),
-          ),
-          Text(_value.toString()),
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 18.0, right: 20, left: 20),
-            child: SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: _navigate,
-                child: Text("Next"),
-              ),
-            ),
-          ),
-
+          )
+          )
         ],
-        
       ),
     );
   }

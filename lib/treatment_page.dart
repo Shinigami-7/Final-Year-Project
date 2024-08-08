@@ -3,7 +3,7 @@ import 'package:projectk/add_med.dart';
 import 'profile.dart';
 
 class TreatmentPage extends StatelessWidget {
-  final String value;
+  final int value;
   final TimeOfDay firstIntakeTime;
   final TimeOfDay secondIntakeTime;
   final TimeOfDay thirdIntakeTime;
