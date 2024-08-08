@@ -12,7 +12,7 @@ class _AddMed3State extends State<AddMed3_2> {
   TimeOfDay _timeOfDay = TimeOfDay.now();
   TimeOfDay _timeOfDay1 = TimeOfDay.now();
   TimeOfDay _timeOfDay2 = TimeOfDay.now();
-  String value = "";
+  int value = 0;
 
   void _showTimePicker(Function(TimeOfDay) onSelected) {
     showTimePicker(
@@ -84,9 +84,9 @@ class _AddMed3State extends State<AddMed3_2> {
                                   border: UnderlineInputBorder(),
                                   hintText: "1",
                                 ),
-                                onChanged: (text) {
+                                onChanged: (value) {
                                   setState(() {
-                                    value = text;
+                                    value = value;
                                   });
                                 },
                               ),
