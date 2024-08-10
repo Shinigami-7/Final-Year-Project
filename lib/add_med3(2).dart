@@ -101,6 +101,45 @@ class _AddMed3State extends State<AddMed3_2> {
                     "Second intake",
                     style: TextStyle(fontSize: 18, color: Colors.grey),
                   ),
+                  Row(
+                    children: [
+                      Icon(Icons.access_time_outlined),
+                      MaterialButton(
+                        onPressed: () => _showTimePicker((value) {
+                          _timeOfDay = value;
+                        }),
+                        child: Text(
+                          _timeOfDay.format(context).toString(),
+                          style: TextStyle(fontSize: 20),
+                        ),
+                      ),
+                      Spacer(),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 25),
+                        child: Row(
+                          children: [
+                            Text("Dose"),
+                            SizedBox(width: 8),
+                            Container(
+                              width: 50,
+                              child: TextField(
+                                decoration: InputDecoration(
+                                  border: UnderlineInputBorder(),
+                                  hintText: "1",
+                                ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    value = value;
+                                  });
+                                },
+                              ),
+                            ),
+                            Text("pill(s)"),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'profile.dart';
 import 'password_change.dart';
 import 'delete_account.dart';
+import 'select_sound.dart';
 
 class Setting extends StatelessWidget {
   const Setting({Key? key}) : super(key: key);
@@ -30,10 +31,10 @@ class Setting extends StatelessWidget {
         child: ListView(
           children: [
             ListTile(
-              leading: Icon(Icons.volume_up, color: Colors.white),
+              leading: Icon(Icons.lock, color: Colors.white),
               title: Text('Select Sound', style: TextStyle(color: Colors.white)),
               onTap: () {
-                // Navigate to select sound page or implement a dialog
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SoundSetting()));
               },
             ),
             Divider(color: Colors.white),
