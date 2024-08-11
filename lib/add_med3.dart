@@ -177,25 +177,25 @@ class _AddMed3State extends State<AddMed3> {
               ),
             ),
 
-            Container(
-              height: 50,
-              width: 350,
-              child: Positioned(
-                bottom: 16.0,
-                left: 16.0,
-                right: 16.0,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => TreatmentPage(
-                                value: value, firstIntakeTime: _timeOfDay, secondIntakeTime: _timeOfDay1, thirdIntakeTime: _timeOfDay2,)));
-                  },
-                  child: Text("Done"),
-                ),
-              ),
-            ),
+            // Container(
+            //   height: 50,
+            //   width: 350,
+            //   child: Positioned(
+            //     bottom: 16.0,
+            //     left: 16.0,
+            //     right: 16.0,
+            //     child: ElevatedButton(
+            //       onPressed: () {
+            //         Navigator.push(
+            //             context,
+            //             MaterialPageRoute(
+            //                 builder: (context) => TreatmentPage(
+            //                     value: value, firstIntakeTime: _timeOfDay, secondIntakeTime: _timeOfDay1, thirdIntakeTime: _timeOfDay2,)));
+            //       },
+            //       child: Text("Done"),
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
