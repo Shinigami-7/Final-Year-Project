@@ -11,40 +11,7 @@ class AddMed2 extends StatefulWidget {
 class _AddMed2State extends State<AddMed2> {
   int? _value = 0;
 
-  void _navigate() {
-    if (_value != null) {
-      switch (_value) {
-        case 1:
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => AddMed3_1(
-                  time: _value!,
-                )),
-          );
-          break;
-        case 2:
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddMed3_2()),
-          );
-          break;
-        case 3:
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AddMed3()),
-          );
-          break;
-        default:
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => AddMed3_1(
-                    time: _value!,
-                  )));
-      }
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +133,14 @@ class _AddMed2State extends State<AddMed2> {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: _navigate,
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => AddMed3_1(
+                              time: _value!,
+                            )));
+                  },
                   child: Text("Next"),
                 ),
               ),
