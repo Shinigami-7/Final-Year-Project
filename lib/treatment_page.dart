@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectk/profile.dart';
 import 'add_med.dart';
 
 class TreatmentPage extends StatelessWidget {
@@ -18,7 +19,15 @@ class TreatmentPage extends StatelessWidget {
           "Treatment",
           style: TextStyle(
               color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 25),
+          
         ),
+        actions: [Padding(
+          padding: const EdgeInsets.only(right: 10.0),
+          child: IconButton(icon: Icon(Icons.person, color: Colors.lightBlue,),
+          onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
+          },),
+        )],
       ),
       body: SingleChildScrollView(
         child: Column(
