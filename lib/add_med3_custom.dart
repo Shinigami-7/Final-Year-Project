@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'treatment_page.dart';
 
-class AddMed3_1 extends StatefulWidget {
+class AddMed3_1_Custom extends StatefulWidget {
   final int time;
 
-  const AddMed3_1({required this.time});
+  const AddMed3_1_Custom({required this.time});
 
   @override
-  State<AddMed3_1> createState() => _AddMed3State();
+  State<AddMed3_1_Custom> createState() => _AddMed3State_Custom();
 }
 
-class _AddMed3State extends State<AddMed3_1> {
+class _AddMed3State_Custom extends State<AddMed3_1_Custom> {
   late List<TimeOfDay?> timeList;
   late List<int> doseList;
 
@@ -38,7 +38,7 @@ class _AddMed3State extends State<AddMed3_1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Medicine Add Page 3'),
+        title: Text('Medicine Add Page 3 Custom'),
       ),
       body: SingleChildScrollView(
         child: Column(

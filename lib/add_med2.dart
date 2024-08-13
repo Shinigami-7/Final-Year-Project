@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectk/add_med3(1).dart';
-import 'package:projectk/add_med3(2).dart';
 import 'package:projectk/add_med3.dart';
+import 'package:projectk/add_med3_custom.dart';
 
 class AddMed2 extends StatefulWidget {
   @override
@@ -11,7 +10,14 @@ class AddMed2 extends StatefulWidget {
 class _AddMed2State extends State<AddMed2> {
   int? _value = 0;
 
+  void _navigate(){
+    if(_value! > 3)
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>AddMed3_1_Custom(time: _value!)));
+    else
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>AddMed3_1(time: _value!)));
 
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,14 +139,7 @@ class _AddMed2State extends State<AddMed2> {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: (){
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AddMed3_1(
-                              time: _value!,
-                            )));
-                  },
+                  onPressed: _navigate,
                   child: Text("Next"),
                 ),
               ),
