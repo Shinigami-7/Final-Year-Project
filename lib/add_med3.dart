@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 import 'treatment_page.dart';
 
-class AddMed3 extends StatefulWidget {
-  const AddMed3({Key? key}) : super(key: key);
+class AddMed3_1 extends StatefulWidget {
+  final int time;
+
+  const AddMed3_1({required this.time});
 
   @override
-  State<AddMed3> createState() => _AddMed3State();
+  State<AddMed3_1> createState() => _AddMed3State();
 }
 
-class _AddMed3State extends State<AddMed3> {
-  TimeOfDay _timeOfDay = TimeOfDay.now();
-  TimeOfDay _timeOfDay1 = TimeOfDay.now();
-  TimeOfDay _timeOfDay2 = TimeOfDay.now();
-  int value = 0;
+class _AddMed3State extends State<AddMed3_1> {
+  late List<TimeOfDay?> timeList;
+  late List<int> doseList;
 
-  void _showTimePicker(Function(TimeOfDay) onSelected) {
+  @override
+  void initState() {
+    super.initState();
+    timeList = List<TimeOfDay?>.filled(widget.time, null); // Initialize list with null values
+    doseList = List<int>.filled(widget.time, 0); // Initialize doses with default values
+  }
+
+  void _showTimePicker(int index) {
     showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
     ).then((value) {
       if (value != null) {
         setState(() {
-          onSelected(value);
+          timeList[index] = value;
         });
       }
     });
@@ -31,7 +38,7 @@ class _AddMed3State extends State<AddMed3> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Medicine add Page3'),
+        title: Text('Medicine Add Page 3'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -45,157 +52,81 @@ class _AddMed3State extends State<AddMed3> {
               ),
             ),
             Text(
-              "Set the reminder time for your \nmedication",
+              "Set the reminder times for your \nmedication",
               style: TextStyle(fontSize: 20, color: Colors.grey),
               textAlign: TextAlign.center,
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "First intake",
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.access_time_outlined),
-                      MaterialButton(
-                        onPressed: () => _showTimePicker((value) {
-                          _timeOfDay = value;
-                        }),
-                        child: Text(
-                          _timeOfDay.format(context).toString(),
-                          style: TextStyle(fontSize: 20),
+            SizedBox(height: 20),
+            for (int i = 0; i < widget.time; i++)
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Intake ${i + 1}",
+                      style: TextStyle(fontSize: 18, color: Colors.grey),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.access_time_outlined),
+                        MaterialButton(
+                          onPressed: () => _showTimePicker(i),
+                          child: Text(
+                            timeList[i] != null ? timeList[i]!.format(context) : 'Select Time',
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ),
-                      ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 25),
-                        child: Row(
-                          children: [
-                            Text("Dose"),
-                            SizedBox(width: 8),
-                            Container(
-                              width: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: UnderlineInputBorder(),
-                                  hintText: "1",
-                                ),
-                                onChanged: (value) {
-                                  setState(() {
-                                    value = value;
-                                  });
-                                },
-                              ),
-                            ),
-                            Text("pill(s)"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    "Second intake",
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.access_time_outlined),
-                      MaterialButton(
-                        onPressed: () => _showTimePicker((value) {
-                          _timeOfDay1 = value;
-                        }),
-                        child: Text(
-                          _timeOfDay1.format(context).toString(),
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 25),
-                        child: Row(
-                          children: [
-                            Text("Dose"),
-                            SizedBox(width: 8),
-                            Container(
-                              width: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: UnderlineInputBorder(),
-                                  hintText: "1",
+                        Spacer(),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 25),
+                          child: Row(
+                            children: [
+                              Text("Dose"),
+                              SizedBox(width: 8),
+                              Container(
+                                width: 50,
+                                child: TextField(
+                                  keyboardType: TextInputType.number,
+                                  decoration: InputDecoration(
+                                    border: UnderlineInputBorder(),
+                                    hintText: "1",
+                                  ),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      doseList[i] = int.tryParse(value) ?? 0;
+                                    });
+                                  },
                                 ),
                               ),
-                            ),
-                            Text("pill(s)"),
-                          ],
+                              Text("pill(s)"),
+                            ],
+                          ),
                         ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            SizedBox(height: 20),
+            SizedBox(
+              height: 50,
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TreatmentPage(
+                        doses: doseList,
+                        times: timeList,
                       ),
-                    ],
-                  ),
-                  Text(
-                    "Third intake",
-                    style: TextStyle(fontSize: 18, color: Colors.grey),
-                  ),
-                  Row(
-                    children: [
-                      Icon(Icons.access_time_outlined),
-                      MaterialButton(
-                        onPressed: () => _showTimePicker((value) {
-                          _timeOfDay2 = value;
-                        }),
-                        child: Text(
-                          _timeOfDay2.format(context).toString(),
-                          style: TextStyle(fontSize: 20),
-                        ),
-                      ),
-                      Spacer(),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 25),
-                        child: Row(
-                          children: [
-                            Text("Dose"),
-                            SizedBox(width: 8),
-                            Container(
-                              width: 50,
-                              child: TextField(
-                                decoration: InputDecoration(
-                                  border: UnderlineInputBorder(),
-                                  hintText: "1",
-                                ),
-                              ),
-                            ),
-                            Text("pill(s)"),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    ),
+                  );
+                },
+                child: Text("Done"),
               ),
             ),
-
-            // Container(
-            //   height: 50,
-            //   width: 350,
-            //   child: Positioned(
-            //     bottom: 16.0,
-            //     left: 16.0,
-            //     right: 16.0,
-            //     child: ElevatedButton(
-            //       onPressed: () {
-            //         Navigator.push(
-            //             context,
-            //             MaterialPageRoute(
-            //                 builder: (context) => TreatmentPage(
-            //                     value: value, firstIntakeTime: _timeOfDay, secondIntakeTime: _timeOfDay1, thirdIntakeTime: _timeOfDay2,)));
-            //       },
-            //       child: Text("Done"),
-            //     ),
-            //   ),
-            // ),
           ],
         ),
       ),
