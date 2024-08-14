@@ -24,6 +24,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         actions: [
           IconButton(
             icon: Icon(Icons.notification_add, color: Colors.blue,),

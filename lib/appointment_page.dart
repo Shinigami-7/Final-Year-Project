@@ -8,31 +8,11 @@ class Appointment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
-      body: Stack(
-        children: [
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent,
+        actions: [
           Padding(
-            padding: const EdgeInsets.only(top: 60, left: 20, right: 20, bottom: 20),
-            child: const Center(
-              child: Text('This is the Appointment page', style: TextStyle(fontSize: 24, color: Colors.white)),
-            ),
-          ),
-          Positioned(
-            left: 20,
-            top: 40,
-            child: IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
-              onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(builder: (context) => const Home()),
-                );
-              },
-            ),
-          ),
-          Positioned(
-            right: 20,
-            top: 40,
+            padding: const EdgeInsets.only(right: 10.0),
             child: IconButton(
               icon: Icon(Icons.notification_add, color: Colors.white, size: 30),
               onPressed: () {
@@ -42,6 +22,34 @@ class Appointment extends StatelessWidget {
                 );
               },
             ),
+          ),
+        ],
+        title: Text("Appointment", style: TextStyle(color: Colors.white),
+        ),
+      ),
+      backgroundColor: Colors.lightBlueAccent,
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 60, left: 20, right: 20, bottom: 20),
+              child: Column(
+                children: [
+                  Text('What is the purpose', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  Container(
+                    width: 200,
+                    child: TextField(
+                      autofocus: false,
+
+                      decoration: InputDecoration(
+
+                        hintText: 'for checkup',
+
+                      ),
+                    ),
+                  )
+                ],
+              ),
+
           ),
         ],
       ),
