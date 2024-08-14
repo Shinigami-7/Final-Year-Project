@@ -41,34 +41,55 @@ class ReportPage extends StatelessWidget {
                 ),
               ],
             ),
+            const SizedBox(height: 20),
             Expanded(
-              child: SfCartesianChart(
-                margin: EdgeInsets.zero,
-                primaryXAxis: CategoryAxis(
-                  title: AxisTitle(text: 'Days', textStyle: TextStyle(fontSize: 14, color: Colors.white)),
-                  labelRotation: 45,
-                  majorGridLines: MajorGridLines(width: 0),
-                ),
-                primaryYAxis: NumericAxis(
-                  title: AxisTitle(text: 'Number of Medicines', textStyle: TextStyle(fontSize: 14, color: Colors.white)),
-                  majorGridLines: MajorGridLines(width: 0),
-                ),
-                series: <ChartSeries>[
-                  LineSeries<ChartData, String>(
-                    dataSource: getChartData(),
-                    xValueMapper: (ChartData data, _) => data.day,
-                    yValueMapper: (ChartData data, _) => data.medicineCount,
-                    name: 'Medicine Intake',
-                    color: Colors.amber,
-                    width: 2, // Line width
-                    markerSettings: MarkerSettings(
-                      isVisible: true,
-                      color: Colors.amber,
-                      borderWidth: 2,
+              child: Center(
+                child: Container(
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.2),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: SfCartesianChart(
+                      primaryXAxis: CategoryAxis(
+                        title: AxisTitle(text: 'Days', textStyle: TextStyle(fontSize: 14, color: Colors.black)),
+                        labelRotation: 45,
+                        majorGridLines: MajorGridLines(width: 0),
+                      ),
+                      primaryYAxis: NumericAxis(
+                        title: AxisTitle(text: 'Number of Medicines', textStyle: TextStyle(fontSize: 14, color: Colors.black)),
+                        majorGridLines: MajorGridLines(width: 0),
+                      ),
+                      series: <ChartSeries>[
+                        LineSeries<ChartData, String>(
+                          dataSource: getChartData(),
+                          xValueMapper: (ChartData data, _) => data.day,
+                          yValueMapper: (ChartData data, _) => data.medicineCount,
+                          name: 'Medicine Intake',
+                          color: Colors.lightBlueAccent,
+                          width: 2,
+                          markerSettings: MarkerSettings(
+                            isVisible: true,
+                            color: Colors.lightBlueAccent,
+                            borderWidth: 2,
+                          ),
+                        ),
+                      ],
+                      tooltipBehavior: TooltipBehavior(enable: true),
                     ),
                   ),
-                ],
-                tooltipBehavior: TooltipBehavior(enable: true),
+                ),
               ),
             ),
           ],
