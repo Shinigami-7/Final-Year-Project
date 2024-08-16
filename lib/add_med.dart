@@ -60,6 +60,7 @@ class _AddMedState extends State<AddMed> {
                 DropdownButton<String>(
                   hint: Text("Select Medicine"),
                   value: selectedMedication,
+
                   onChanged: (String? newValue) {
                     setState(() {
                       selectedMedication = newValue;
@@ -72,9 +73,11 @@ class _AddMedState extends State<AddMed> {
                     );
                   }).toList(),
                 ),
+
               ],
             ),
           ),
+          Text(selectedMedication.toString()),
           Spacer(),
           Padding(
             padding: const EdgeInsets.only(bottom: 18.0, right: 20, left: 20),
@@ -86,7 +89,7 @@ class _AddMedState extends State<AddMed> {
                   if (selectedMedication != null) {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => AddMed2()),
+                      MaterialPageRoute(builder: (context) => AddMed2(userInput: selectedMedication.toString(),)),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

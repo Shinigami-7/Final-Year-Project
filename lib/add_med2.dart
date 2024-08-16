@@ -3,6 +3,8 @@ import 'package:projectk/add_med3.dart';
 import 'package:projectk/add_med3_custom.dart';
 
 class AddMed2 extends StatefulWidget {
+  final String userInput;
+  AddMed2({Key? key,required this.userInput})  : super(key: key);
   @override
   State<AddMed2> createState() => _AddMed2State();
 }
@@ -14,7 +16,7 @@ class _AddMed2State extends State<AddMed2> {
     if(_value! > 3)
       Navigator.push(context, MaterialPageRoute(builder: (context)=>AddMed3_1_Custom(time: _value!)));
     else
-      Navigator.push(context, MaterialPageRoute(builder: (context)=>AddMed3_1(time: _value!)));
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>AddMed3_1(time: _value!, UserInput: widget.userInput,)));
 
 
   }

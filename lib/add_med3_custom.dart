@@ -119,7 +119,7 @@ class _AddMed3State_Custom extends State<AddMed3_1_Custom> {
                     MaterialPageRoute(
                       builder: (context) => TreatmentPage(
                         doses: doseList,
-                        times: timeList,
+                        times: timeList, UserInput: null,
                       ),
                     ),
                   );
