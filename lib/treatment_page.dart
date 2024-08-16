@@ -17,20 +17,22 @@ class TreatmentPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent,
         title: Text(
           "Treatment",
           style: TextStyle(
-              color: Colors.blue, fontWeight: FontWeight.bold, fontSize: 25),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),
           
         ),
         actions: [Padding(
           padding: const EdgeInsets.only(right: 10.0),
-          child: IconButton(icon: Icon(Icons.person, color: Colors.lightBlue,),
+          child: IconButton(icon: Icon(Icons.person, color: Colors.white, size: 30),
           onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context)=>Profile()));
           },),
         )],
       ),
+      backgroundColor: Colors.lightBlueAccent,
       body: SingleChildScrollView(
         child: Column(
           children: [
