@@ -3,8 +3,9 @@ import 'treatment_page.dart';
 
 class AddMed3_1 extends StatefulWidget {
   final int time;
+  final String UserInput;
 
-  const AddMed3_1({required this.time});
+  const AddMed3_1({required this.time, required this.UserInput,});
 
   @override
   State<AddMed3_1> createState() => _AddMed3State();
@@ -109,6 +110,7 @@ class _AddMed3State extends State<AddMed3_1> {
                 ),
               ),
             SizedBox(height: 20),
+            Text(widget.UserInput),
             SizedBox(
               height: 50,
               width: double.infinity,
@@ -120,6 +122,7 @@ class _AddMed3State extends State<AddMed3_1> {
                       builder: (context) => TreatmentPage(
                         doses: doseList,
                         times: timeList,
+                        UserInput: widget.UserInput,
                       ),
                     ),
                   );

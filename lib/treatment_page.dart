@@ -5,10 +5,12 @@ import 'add_med.dart';
 class TreatmentPage extends StatelessWidget {
   final List<TimeOfDay?> times;
   final List<int> doses;
+  final UserInput;
 
   TreatmentPage({
     required this.times,
     required this.doses,
+    required this.UserInput,
   });
 
   @override
@@ -57,7 +59,7 @@ class TreatmentPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Mylod 2.5",
+                            UserInput,
                             style: TextStyle(
                                 fontSize: 20, color: Colors.blueGrey),
                           ),
