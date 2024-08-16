@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
     const TodayPage(),
     const Appointment(),
     const ReportPage(),
-    TreatmentPage(times:  [ TimeOfDay(hour: 5,minute: 44)], doses: [], UserInput: null,)
+    TreatmentPage(times:  [ TimeOfDay(hour: 5,minute: 44)], doses: [], UserInput: "",)
   ];
 
   void _onItemTapped(int index) {
