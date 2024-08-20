@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_med.dart';
 import 'notification.dart';
 
 class Appointment extends StatelessWidget {
@@ -23,34 +24,56 @@ class Appointment extends StatelessWidget {
             ),
           ),
         ],
-        title: Text("Appointment", style: TextStyle(color: Colors.white),
+        title: Text(
+          "Appointment",
+          style: TextStyle(color: Colors.white),
         ),
       ),
       backgroundColor: Colors.lightBlueAccent,
-      body: Stack(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 60, left: 20, right: 20, bottom: 20),
-              child: Column(
-                children: [
-                  Text('What is the purpose', style: TextStyle(fontSize: 18, color: Colors.white)),
-                  Container(
-                    width: 200,
-                    child: TextField(
-                      autofocus: false,
-
-                      decoration: InputDecoration(
-
-                        hintText: 'for checkup',
-
-                      ),
-                    ),
-                  )
-                ],
-              ),
-
+      body: Padding(
+        padding: const EdgeInsets.only(
+            top: 20, left: 20, right: 20, bottom: 20),
+        child: Container(
+          height: 200,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.greenAccent,
+            borderRadius: BorderRadius.circular(20),
           ),
-        ],
+          child: Padding(
+            padding: const EdgeInsets.only(
+                left: 15.0, top: 10, right: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      'Eye Checkup \nDr. Sanduik Ruit',
+                      style: TextStyle(
+                          fontSize: 18, color: Colors.black),
+                    ),
+                    Spacer(),
+                    Text(
+                      '10:30 AM \n7 August 2024',
+                      style: TextStyle(
+                          fontSize: 16, color: Colors.black),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddMed()),
+          );
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
