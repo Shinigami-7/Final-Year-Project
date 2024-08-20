@@ -5,7 +5,7 @@ class AddMed3_1 extends StatefulWidget {
   final int time;
   final String UserInput;
 
-  const AddMed3_1({required this.time, required this.UserInput,});
+  const AddMed3_1({required this.time, required this.UserInput});
 
   @override
   State<AddMed3_1> createState() => _AddMed3State();
@@ -41,77 +41,86 @@ class _AddMed3State extends State<AddMed3_1> {
       appBar: AppBar(
         title: Text('Medicine Add Page 3'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Center(
-              child: Image.asset(
-                'assets/images/medicine.png',
-                height: 250,
-                width: 250,
-              ),
-            ),
-            Text(
-              "Set the reminder times for your \nmedication",
-              style: TextStyle(fontSize: 20, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20),
-            for (int i = 0; i < widget.time; i++)
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Intake ${i + 1}",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Center(
+                    child: Image.asset(
+                      'assets/images/medicine.png',
+                      height: 250,
+                      width: 250,
                     ),
-                    Row(
-                      children: [
-                        Icon(Icons.access_time_outlined),
-                        MaterialButton(
-                          onPressed: () => _showTimePicker(i),
-                          child: Text(
-                            timeList[i] != null ? timeList[i]!.format(context) : 'Select Time',
-                            style: TextStyle(fontSize: 20),
+                  ),
+                  Text(
+                    "Set the reminder times for your \nmedication",
+                    style: TextStyle(fontSize: 20, color: Colors.grey),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 20),
+                  for (int i = 0; i < widget.time; i++)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Intake ${i + 1}",
+                            style: TextStyle(fontSize: 18, color: Colors.grey),
                           ),
-                        ),
-                        Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 25),
-                          child: Row(
+                          Row(
                             children: [
-                              Text("Dose"),
-                              SizedBox(width: 8),
-                              Container(
-                                width: 50,
-                                child: TextField(
-                                  keyboardType: TextInputType.number,
-                                  decoration: InputDecoration(
-                                    border: UnderlineInputBorder(),
-                                    hintText: "1",
-                                  ),
-                                  onChanged: (value) {
-                                    setState(() {
-                                      doseList[i] = int.tryParse(value) ?? 0;
-                                    });
-                                  },
+                              Icon(Icons.access_time_outlined),
+                              MaterialButton(
+                                onPressed: () => _showTimePicker(i),
+                                child: Text(
+                                  timeList[i] != null ? timeList[i]!.format(context) : 'Select Time',
+                                  style: TextStyle(fontSize: 20),
                                 ),
                               ),
-                              Text("pill(s)"),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 25),
+                                child: Row(
+                                  children: [
+                                    Text("Dose"),
+                                    SizedBox(width: 8),
+                                    Container(
+                                      width: 50,
+                                      child: TextField(
+                                        keyboardType: TextInputType.number,
+                                        decoration: InputDecoration(
+                                          border: UnderlineInputBorder(),
+                                          hintText: "1",
+                                        ),
+                                        onChanged: (value) {
+                                          setState(() {
+                                            doseList[i] = int.tryParse(value) ?? 0;
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Text("pill(s)"),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ],
-                ),
+                  SizedBox(height: 20),
+                  Text(widget.UserInput),
+                ],
               ),
-            SizedBox(height: 20),
-            Text(widget.UserInput),
-            SizedBox(
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: SizedBox(
               height: 50,
               width: double.infinity,
               child: ElevatedButton(
@@ -130,8 +139,8 @@ class _AddMed3State extends State<AddMed3_1> {
                 child: Text("Done"),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
