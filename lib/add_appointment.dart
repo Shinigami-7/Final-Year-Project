@@ -1,4 +1,6 @@
+// add_appointment.dart
 import 'package:flutter/material.dart';
+import 'package:projectk/appointment_info.dart';
 import 'package:projectk/appointment_page.dart';
 
 class AddAppointment extends StatefulWidget {
@@ -10,7 +12,11 @@ class AddAppointment extends StatefulWidget {
 
 class _AddAppointmentState extends State<AddAppointment> {
   TextEditingController _dateController = TextEditingController();
-  TimeOfDay? timeList;
+  TextEditingController _timeController = TextEditingController();
+  TextEditingController _appointmentNameController = TextEditingController();
+  TextEditingController _doctorNameController = TextEditingController();
+  TextEditingController _hospitalNameController = TextEditingController();
+  TextEditingController _detailsController = TextEditingController();
 
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
@@ -21,22 +27,22 @@ class _AddAppointmentState extends State<AddAppointment> {
     );
     if (pickedDate != null) {
       setState(() {
-        _dateController.text = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+        _dateController.text =
+        "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
       });
     }
   }
 
-  void _showTimePicker() {
-    showTimePicker(
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? pickedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
-    ).then((value) {
-      if (value != null) {
-        setState(() {
-          timeList = value;
-        });
-      }
-    });
+    );
+    if (pickedTime != null) {
+      setState(() {
+        _timeController.text = pickedTime.format(context);
+      });
+    }
   }
 
   @override
@@ -48,65 +54,112 @@ class _AddAppointmentState extends State<AddAppointment> {
       ),
       backgroundColor: Colors.lightBlueAccent,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 30.0, top: 15),
-              child: Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Name of Appointment",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Name of Appointment",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  TextField(
+                    controller: _appointmentNameController,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(),
+                      hintText: "Eye Checkup",
+                      hintStyle: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    Container(
-                      width: 300,
-                      child: TextField(
-                        keyboardType: TextInputType.text,
-                        style: TextStyle(color: Colors.white, fontSize: 18),
-                        decoration: InputDecoration(
-                          border: UnderlineInputBorder(),
-                          hintText: "Eye Checkup",
-                          hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                        ),
-                      ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Date",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  TextField(
+                    controller: _dateController,
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Colors.white),
+                      hintText: 'DD/MM/YYYY',
+                      suffixIcon: Icon(Icons.calendar_today),
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Date",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    readOnly: true,
+                    onTap: () => _selectDate(context),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Pick up Time",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  TextField(
+                    controller: _timeController,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
+                      hintText: 'Select Time',
+                      suffixIcon: Icon(Icons.access_time),
                     ),
-                    Container(
-                      width: 300,
-                      child: TextField(
-                        controller: _dateController,
-                        decoration: InputDecoration(
-                          hintStyle: TextStyle(color: Colors.white),
-                          hintText: 'DD/MM/YYYY',
-                          suffixIcon: Icon(Icons.calendar_today),
-                        ),
-                        readOnly: true, // Prevent manual input
-                        onTap: () => _selectDate(context),
-                      ),
+                    readOnly: true,
+                    onTap: () => _selectTime(context),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Doctor Name",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  TextField(
+                    controller: _doctorNameController,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(),
+                      hintText: "DR. Sanduik Ruit",
+                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                    SizedBox(height: 20),
-                    Text(
-                      "Pick up Time",
-                      style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Hospital/Medical Name",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  TextField(
+                    controller: _hospitalNameController,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                    decoration: InputDecoration(
+                      border: UnderlineInputBorder(),
+                      hintText: "Dristi",
+                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-
-
-                    MaterialButton(
-                      onPressed: _showTimePicker,
-                      child: Text(
-                        timeList != null ? timeList!.format(context) : 'Select Time',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Details",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
+                  ),
+                  SizedBox(height: 8),
+                  TextField(
+                    controller: _detailsController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    minLines: 1,
+                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: 'Enter your description here',
+                      hintStyle: TextStyle(color: Colors.white),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -117,8 +170,19 @@ class _AddAppointmentState extends State<AddAppointment> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Appointment()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AppointmentInfo(
+                        appointmentName: _appointmentNameController.text,
+                        date: _dateController.text,
+                        time: _timeController.text,
+                        doctorName: _doctorNameController.text,
+                        hospitalName: _hospitalNameController.text,
+                        details: _detailsController.text,
+                      ),
+                    ),
+                  );
                 },
                 child: Text("Done"),
               ),
