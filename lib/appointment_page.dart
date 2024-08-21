@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectk/add_appointment.dart';
 import 'add_med.dart';
 import 'notification.dart';
 
@@ -70,7 +71,7 @@ class Appointment extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => AddMed()),
+            MaterialPageRoute(builder: (context) => AddAppointment()),
           );
         },
         child: Icon(Icons.add),
