@@ -18,8 +18,8 @@ class _AddMed3State extends State<AddMed3_1> {
   @override
   void initState() {
     super.initState();
-    timeList = List<TimeOfDay?>.filled(widget.time, null); // Initialize list with null values
-    doseList = List<int>.filled(widget.time, 0); // Initialize doses with default values
+    timeList = List<TimeOfDay?>.filled(widget.time, null);
+    doseList = List<int>.filled(widget.time, 0);
   }
 
   void _showTimePicker(int index) {
