@@ -113,7 +113,7 @@ class _AddMed3State extends State<AddMed3_1> {
                       ),
                     ),
                   SizedBox(height: 20),
-                  Text(widget.UserInput),
+                  // Text(widget.UserInput),
                 ],
               ),
             ),
