@@ -79,11 +79,7 @@ class _AddMedState extends State<AddMed> {
                       ],
                     ),
                   ),
-                  if (selectedMedication != null)
-                    Text(
-                      selectedMedication!,
-                      style: TextStyle(fontSize: 18),
-                    ),
+
                 ],
               ),
             ),
