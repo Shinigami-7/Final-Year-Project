@@ -1,7 +1,6 @@
-// add_appointment.dart
 import 'package:flutter/material.dart';
-import 'package:projectk/appointment_info.dart';
-import 'package:projectk/appointment_page.dart';
+import 'package:intl/intl.dart';
+import 'package:projectk/appointment_page.dart'; // Import intl for date formatting
 
 class AddAppointment extends StatefulWidget {
   const AddAppointment({super.key});
@@ -18,6 +17,9 @@ class _AddAppointmentState extends State<AddAppointment> {
   TextEditingController _hospitalNameController = TextEditingController();
   TextEditingController _detailsController = TextEditingController();
 
+  DateTime? _selectedDate;
+  TimeOfDay? _selectedTime;
+
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? pickedDate = await showDatePicker(
       context: context,
@@ -27,8 +29,8 @@ class _AddAppointmentState extends State<AddAppointment> {
     );
     if (pickedDate != null) {
       setState(() {
-        _dateController.text =
-        "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
+        _selectedDate = pickedDate;
+        _dateController.text = DateFormat('d MMMM, yyyy').format(pickedDate);
       });
     }
   }
@@ -40,6 +42,7 @@ class _AddAppointmentState extends State<AddAppointment> {
     );
     if (pickedTime != null) {
       setState(() {
+        _selectedTime = pickedTime;
         _timeController.text = pickedTime.format(context);
       });
     }
@@ -73,7 +76,7 @@ class _AddAppointmentState extends State<AddAppointment> {
                     decoration: InputDecoration(
                       border: UnderlineInputBorder(),
                       hintText: "Eye Checkup",
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 16),
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 16),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -85,8 +88,8 @@ class _AddAppointmentState extends State<AddAppointment> {
                   TextField(
                     controller: _dateController,
                     decoration: InputDecoration(
-                      hintStyle: TextStyle(color: Colors.white),
-                      hintText: 'DD/MM/YYYY',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      hintText: 'DD MMMM, YYYY',
                       suffixIcon: Icon(Icons.calendar_today),
                     ),
                     readOnly: true,
@@ -102,7 +105,7 @@ class _AddAppointmentState extends State<AddAppointment> {
                     controller: _timeController,
                     style: TextStyle(color: Colors.white, fontSize: 18),
                     decoration: InputDecoration(
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
                       hintText: 'Select Time',
                       suffixIcon: Icon(Icons.access_time),
                     ),
@@ -122,7 +125,7 @@ class _AddAppointmentState extends State<AddAppointment> {
                     decoration: InputDecoration(
                       border: UnderlineInputBorder(),
                       hintText: "DR. Sanduik Ruit",
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -138,7 +141,7 @@ class _AddAppointmentState extends State<AddAppointment> {
                     decoration: InputDecoration(
                       border: UnderlineInputBorder(),
                       hintText: "Dristi",
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 18),
+                      hintStyle: TextStyle(color: Colors.grey, fontSize: 18),
                     ),
                   ),
                   SizedBox(height: 20),
@@ -156,7 +159,7 @@ class _AddAppointmentState extends State<AddAppointment> {
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: 'Enter your description here',
-                      hintStyle: TextStyle(color: Colors.white),
+                      hintStyle: TextStyle(color: Colors.grey),
                     ),
                   ),
                 ],
@@ -170,19 +173,26 @@ class _AddAppointmentState extends State<AddAppointment> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => AppointmentInfo(
-                        appointmentName: _appointmentNameController.text,
-                        date: _dateController.text,
-                        time: _timeController.text,
-                        doctorName: _doctorNameController.text,
-                        hospitalName: _hospitalNameController.text,
-                        details: _detailsController.text,
+                  if (_selectedDate != null && _selectedTime != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Appointment(
+                          appointmentName: _appointmentNameController.text,
+                          date: _selectedDate!,
+                          time: _selectedTime!,
+                          doctorName: _doctorNameController.text,
+                          hospitalName: _hospitalNameController.text,
+                          details: _detailsController.text,
+                        ),
                       ),
-                    ),
-                  );
+                    );
+                  } else {
+                    // Handle the case where date or time is not selected
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Please select both date and time')),
+                    );
+                  }
                 },
                 child: Text("Done"),
               ),
