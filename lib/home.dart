@@ -35,7 +35,12 @@ class _HomeState extends State<Home> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     const TodayPage(),
-    const Appointment(),
+    Appointment( appointmentName: 'Appointment',
+      date: DateTime(2002, 11, 27), // Using current date as default
+      time: TimeOfDay(hour: 9, minute: 0), // Default time (e.g., 9:00 AM)
+      doctorName: 'Dr. Default',
+      hospitalName: 'Default Hospital',
+      details: 'No details provided',),
     const ReportPage(),
     TreatmentPage(times:  [ TimeOfDay(hour: 5,minute: 44)], doses: [], UserInput: "",)
   ];

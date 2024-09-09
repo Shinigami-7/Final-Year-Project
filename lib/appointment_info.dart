@@ -1,10 +1,10 @@
-// appointment_page.dart
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart'; // Import intl for date formatting
 
 class AppointmentInfo extends StatelessWidget {
   final String appointmentName;
-  final String date;
-  final String time;
+  final DateTime date;
+  final TimeOfDay time;
   final String doctorName;
   final String hospitalName;
   final String details;
@@ -21,6 +21,9 @@ class AppointmentInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String formattedDate = DateFormat('d MMMM, yyyy').format(date);
+    String formattedTime = time.format(context);
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Appointment Details'),
@@ -33,33 +36,33 @@ class AppointmentInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Appointment Name: $appointmentName",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              'Appointment Name: $appointmentName',
+              style: TextStyle(fontSize: 20, color: Colors.white),
             ),
             SizedBox(height: 10),
             Text(
-              "Date: $date",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              'Date: $formattedDate',
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
             SizedBox(height: 10),
             Text(
-              "Time: $time",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              'Time: $formattedTime',
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
             SizedBox(height: 10),
             Text(
-              "Doctor Name: $doctorName",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              'Doctor: $doctorName',
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
             SizedBox(height: 10),
             Text(
-              "Hospital/Medical Name: $hospitalName",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              'Hospital: $hospitalName',
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
             SizedBox(height: 10),
             Text(
-              "Details: $details",
-              style: TextStyle(color: Colors.white, fontSize: 18),
+              'Details: $details',
+              style: TextStyle(fontSize: 18, color: Colors.white),
             ),
           ],
         ),
